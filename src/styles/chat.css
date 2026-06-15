@@ -1,0 +1,393 @@
+.chatPage,
+.chatDetail {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.chatScreen {
+  padding: 18px 30px 34px 14px;
+}
+
+/* 날짜 구분 */
+
+.dateDivider {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.dateDivider span {
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: #f7f7f9;
+  color: #9a9ca4;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+/* 메시지 */
+
+.messageItem {
+  display: flex;
+  gap: 8px;
+  margin: 13px 0;
+  scroll-margin-top: 18px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.messageBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.senderName {
+  margin: 0 0 5px;
+  font-size: 10px;
+  color: #8d8f98;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.messageRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.textBubble {
+  max-width: 240px;
+  padding: 10px 13px;
+  border-radius: 0 18px 18px 18px;
+  background: #f2f2f4;
+  color: #3f4149;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.messageTime {
+  flex: 0 0 auto;
+  padding-bottom: 3px;
+  color: #b5b6bd;
+  font-size: 10.5px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+/* 답장 */
+
+.replyPreview {
+  display: flex;
+  max-width: 240px;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+
+.replyPreview i {
+  width: 3px;
+  border-radius: 999px;
+  background: #eeeef1;
+  flex-shrink: 0;
+}
+
+.replyPreview p {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 15px;
+  background: #f7f7f9;
+  color: #8f9199;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.replyPreview p.hasEmoticon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.replyPreview p span {
+  min-width: 0;
+}
+
+.replyPreviewEmoticon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 미디어 메시지 */
+
+.chatMediaButton {
+  display: block;
+  position: relative;
+  width: fit-content;
+  max-width: calc(100vw - 128px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.mediaCard {
+  display: block;
+  width: auto;
+  max-width: min(240px, calc(100vw - 128px));
+  max-height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #f3f3f5;
+}
+
+.emoticonImage {
+  width: 128px;
+  max-height: 128px;
+  object-fit: contain;
+  display: block;
+}
+
+.chatVideoOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.14);
+  color: #fff;
+}
+
+.chatVideoPlay {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.35));
+}
+
+.chatVideoPlay svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.chatVideoOverlay em {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 400;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* 날짜 카드 목록 */
+
+.dayGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.dayCard {
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dayCard * {
+  text-decoration: none;
+}
+
+.dayThumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f2f2f4;
+}
+
+.dayThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dayEmpty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: #f2f2f4;
+}
+
+.dayEmpty span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #b6b7bd;
+  letter-spacing: -0.05em;
+}
+
+.dayHover {
+  position: absolute;
+  inset: 0;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.38);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.dayCard:hover .dayHover {
+  opacity: 1;
+}
+
+.dayHover strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dayHover span {
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 300;
+  opacity: 0.82;
+}
+
+.dayInfo {
+  padding: 10px 11px 11px;
+}
+
+.dayInfo strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #303139;
+  letter-spacing: -0.03em;
+}
+
+.dayInfo span {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 300;
+  color: #9b9da5;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+/* 날짜 상세 하단 이동 */
+
+.dayNav {
+  padding: 0 14px 70px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+@media (max-width: 699px) {
+  .dayNav {
+    padding-bottom: 50px;
+  }
+}
+
+.dayNavCard {
+  min-width: 0;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #f0f0f2;
+  border-radius: 999px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dayNavCard strong {
+  font-size: 11px;
+  font-weight: 400;
+  color: #6f7179;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.dayNavCard svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: #b2b4bb;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.dayNavCard.next {
+  margin-left: auto;
+}
+
+.messageItem.isTargetMessage .textBubble,
+.messageItem.isTargetMessage .voiceBubble,
+.messageItem.isTargetMessage .emoticonImage {
+  animation: targetMessageGlow 2.2s ease;
+}
+
+.messageItem.isTargetMessage .chatMediaButton {
+  animation: targetMediaGlow 2.2s ease;
+}
+
+@keyframes targetMessageGlow {
+  0% {
+    background-color: rgba(251, 72, 102, 0.14);
+    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+  }
+
+  45% {
+    box-shadow: 0 0 0 5px rgba(251, 72, 102, 0.08);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+  }
+}
+
+@keyframes targetMediaGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+    filter: brightness(1.04);
+  }
+
+  45% {
+    box-shadow: 0 0 0 5px rgba(251, 72, 102, 0.18);
+    filter: brightness(1.04);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+    filter: brightness(1);
+  }
+}

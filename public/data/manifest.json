@@ -1,0 +1,140 @@
+{
+  "archive": {
+    "title": "김채원 프롬 아카이브",
+    "period": "2024.05.11 ~ 2026.06.30",
+    "daysTogether": 806,
+    "nickname": "딸랑단"
+  },
+  "profile": {
+    "name": "김채원",
+    "defaultAvatar": "/profile/240416.jpeg",
+    "defaultArtistNickname": "김채원",
+    "defaultFanNickname": "딸랑단",
+    "avatars": [
+      {
+        "from": "2024-04-16T00:00:00",
+        "to": "2024-06-21T23:59:59",
+        "src": "/profile/240416.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2024-06-22T00:00:00",
+        "to": "2024-06-30T23:59:59",
+        "src": "/profile/240622.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2024-07-01T00:00:00",
+        "to": "2024-10-11T23:59:59",
+        "src": "/profile/240701.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2024-10-12T00:00:00",
+        "to": "2025-01-30T23:59:59",
+        "src": "/profile/241012.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-01-31T00:00:00",
+        "to": "2025-03-31T23:59:59",
+        "src": "/profile/250131.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-04-01T00:00:00",
+        "to": "2025-04-05T23:59:59",
+        "src": "/profile/250401.jpeg",
+        "artistNickname": "토마토 공주🍅"
+      },
+      {
+        "from": "2025-04-06T00:00:00",
+        "to": "2025-04-30T23:59:59",
+        "src": "/profile/250406.PNG",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-05-01T00:00:00",
+        "to": "2025-05-04T23:59:59",
+        "src": "/profile/250501.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-05-05T00:00:00",
+        "to": "2025-05-12T23:59:59",
+        "src": "/profile/250505.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-05-13T00:00:00",
+        "to": "2025-05-19T23:59:59",
+        "src": "/profile/250513.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-05-20T00:00:00",
+        "to": "2025-10-04T23:59:59",
+        "src": "/profile/250520.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-10-05T00:00:00",
+        "to": "2025-12-26T23:59:59",
+        "src": "/profile/251005.PNG",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2025-12-27T00:00:00",
+        "to": "2026-03-26T06:05:12.275Z",
+        "src": "/profile/251227.jpeg",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2026-03-26T06:05:12.275Z",
+        "to": "2026-03-31T23:59:59",
+        "src": "/profile/260326.PNG",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2026-04-01T00:00:00",
+        "to": "2026-05-26T23:59:59",
+        "src": "/profile/260401.PNG",
+        "artistNickname": "김채원"
+      },
+      {
+        "from": "2026-05-27T00:00:00",
+        "to": "2026-06-30T23:59:59",
+        "src": "/profile/260527.PNG",
+        "artistNickname": "김채원"
+      }
+    ]
+  },
+  "months": [
+    { "id": "2024-05", "label": "2024년 5월", "file": "/data/2024-05.json" },
+    { "id": "2024-06", "label": "2024년 6월", "file": "/data/2024-06.json" },
+    { "id": "2024-07", "label": "2024년 7월", "file": "/data/2024-07.json" },
+    { "id": "2024-08", "label": "2024년 8월", "file": "/data/2024-08.json" },
+    { "id": "2024-09", "label": "2024년 9월", "file": "/data/2024-09.json" },
+    { "id": "2024-10", "label": "2024년 10월", "file": "/data/2024-10.json" },
+    { "id": "2024-11", "label": "2024년 11월", "file": "/data/2024-11.json" },
+    { "id": "2024-12", "label": "2024년 12월", "file": "/data/2024-12.json" },
+    { "id": "2025-01", "label": "2025년 1월", "file": "/data/2025-01.json" },
+    { "id": "2025-02", "label": "2025년 2월", "file": "/data/2025-02.json" },
+    { "id": "2025-03", "label": "2025년 3월", "file": "/data/2025-03.json" },
+    { "id": "2025-04", "label": "2025년 4월", "file": "/data/2025-04.json" },
+    { "id": "2025-05", "label": "2025년 5월", "file": "/data/2025-05.json" },
+    { "id": "2025-06", "label": "2025년 6월", "file": "/data/2025-06.json" },
+    { "id": "2025-07", "label": "2025년 7월", "file": "/data/2025-07.json" },
+    { "id": "2025-08", "label": "2025년 8월", "file": "/data/2025-08.json" },
+    { "id": "2025-09", "label": "2025년 9월", "file": "/data/2025-09.json" },
+    { "id": "2025-10", "label": "2025년 10월", "file": "/data/2025-10.json" },
+    { "id": "2025-11", "label": "2025년 11월", "file": "/data/2025-11.json" },
+    { "id": "2025-12", "label": "2025년 12월", "file": "/data/2025-12.json" },
+    { "id": "2026-01", "label": "2026년 1월", "file": "/data/2026-01.json" },
+    { "id": "2026-02", "label": "2026년 2월", "file": "/data/2026-02.json" },
+    { "id": "2026-03", "label": "2026년 3월", "file": "/data/2026-03.json" },
+    { "id": "2026-04", "label": "2026년 4월", "file": "/data/2026-04.json" },
+    { "id": "2026-05", "label": "2026년 5월", "file": "/data/2026-05.json" },
+    { "id": "2026-06", "label": "2026년 6월", "file": "/data/2026-06.json" }
+  ]
+}
