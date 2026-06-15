@@ -377,7 +377,7 @@
 
 @media (max-width: 699px) {
 
-  .homeNoticeSettingText, .homeNoticeLine, .homeNoticeWarning {
+  .homeNoticeSettingText, .homeNoticeWarning {
 
     display: none;
 
