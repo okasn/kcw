@@ -167,7 +167,7 @@ export default async function HomePage() {
 
               <div className="homeNoticeLine homeNoticeWarning">
                 <p>
-                  <strong className="homeNoticeSettingText">설정에서 내 애칭 변경과 다크모드를 설정할 수 있어요</strong>
+                  <strong className="homeNoticeSettingText">설정에서 내 애칭을 변경할 수 있어요</strong>
                 </p>
               </div>
             </div>
@@ -179,7 +179,7 @@ export default async function HomePage() {
             </div>
 
             <span>설정</span>
-            <p>내 애칭 변경과 다크모드를 설정할 수 있어요</p>
+            <p>내 애칭을 변경할 수 있어요</p>
           </Link>
         </section>
       </div>
