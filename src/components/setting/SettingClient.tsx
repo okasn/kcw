@@ -88,26 +88,6 @@ export default function SettingClient() {
         </form>
       </section>
 
-      <section className="settingCard">
-        <div className="settingHead">
-          <MoonStar size={16} />
-          <span>다크모드</span>
-        </div>
-
-        <p>
-          화면 테마를 어둡게 변경합니다.
-        </p>
-
-        <button
-          className={`settingSwitch ${
-            darkMode ? 'isActive' : ''
-          }`}
-          onClick={toggleDarkMode}
-        >
-          <i />
-        </button>
-      </section>
-
       {toastOpen && (
         <div className="settingToast">
           애칭이 저장되었어요.
