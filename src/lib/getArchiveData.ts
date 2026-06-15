@@ -10,7 +10,6 @@ export type DayGroup = {
   year: string;
   month: string;
   shortDate: string;
-  messages: ChatMessage[];
   thumbnail: string;
   messageCount: number;
   imageCount: number;
@@ -81,7 +80,6 @@ export const getDayGroups = cache(async (): Promise<DayGroup[]> => {
         year: date.slice(0, 4),
         month: date.slice(5, 7),
         shortDate: date.slice(2).replaceAll('-', ''),
-        messages: items,
         thumbnail: media ? getThumbnailUrl(media) : '',
         messageCount: items.length,
         imageCount,

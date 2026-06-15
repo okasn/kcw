@@ -15,7 +15,6 @@ type SearchMessage = {
 };
 
 const RECENT_KEY = 'recentSearches';
-const ACTIVE_QUERY_KEY = 'activeSearchQuery';
 const ACTIVE_SCROLL_KEY = 'activeSearchScrollY';
 const RESTORE_SEARCH_KEY = 'restoreSearchOnReturn';
 const MAX_RECENT = 8;
@@ -174,7 +173,6 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
 
             if (!value.trim()) {
               setQuery('');
-              sessionStorage.removeItem(ACTIVE_QUERY_KEY);
             }
           }}
           placeholder="메시지 검색"
@@ -187,7 +185,6 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
             onClick={() => {
               setInputValue('');
               setQuery('');
-              sessionStorage.removeItem(ACTIVE_QUERY_KEY);
               router.push('/search');
             }}
             aria-label="검색어 지우기"
@@ -239,7 +236,6 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
             key={msg.id}
             onClick={() => {
               saveRecent(query);
-              sessionStorage.setItem(ACTIVE_QUERY_KEY, query);
               sessionStorage.setItem(ACTIVE_SCROLL_KEY, String(window.scrollY));
               sessionStorage.setItem(RESTORE_SEARCH_KEY, 'true');
             }}
