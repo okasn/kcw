@@ -5,6 +5,7 @@ import HomeQuickSettings from '@/components/home/HomeQuickSettings';
 import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
 import { getKoreanNow } from '@/lib/format';
+import { preload } from 'react-dom';
 
 function HeartIcon() {
   return (
@@ -19,6 +20,20 @@ export default async function HomePage() {
   const days = await getDayGroups();
 
   const { archive, profile } = manifest;
+
+  const avatarPreloadList = Array.from(
+    new Set([
+      profile.defaultAvatar,
+      '/profile/251227.jpeg',
+      ...profile.avatars.map((avatar: { src: string }) => avatar.src),
+    ].filter(Boolean))
+  );
+
+  for (const avatarSrc of avatarPreloadList) {
+    preload(avatarSrc, {
+      as: 'image',
+    });
+  }
 
   const today = getKoreanNow();
   const currentYear = today.getFullYear();
