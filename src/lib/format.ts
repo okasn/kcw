@@ -1,3 +1,13 @@
+export function getKoreanNow() {
+  const now = new Date();
+
+  return new Date(
+    now.toLocaleString('en-US', {
+      timeZone: 'Asia/Seoul',
+    })
+  );
+}
+
 export function formatKoreanDate(iso: string) {
   const d = new Date(iso);
   const yyyy = d.getFullYear();

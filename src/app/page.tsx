@@ -4,6 +4,7 @@ import HomeRecommendInfo from '@/components/home/HomeRecommendInfo';
 import { Settings } from 'lucide-react';
 import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
+import { getKoreanNow } from '@/lib/format';
 
 function HeartIcon() {
   return (
@@ -19,7 +20,7 @@ export default async function HomePage() {
 
   const { archive, profile } = manifest;
 
-  const today = new Date();
+  const today = getKoreanNow();
   const currentYear = today.getFullYear();
 
   const todayMonth = today.getMonth() + 1;
