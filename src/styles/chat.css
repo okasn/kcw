@@ -212,7 +212,7 @@
 .chatVideoOverlay em {
   position: absolute;
   left: 50%;
-  top: calc(50% + 22px);
+  top: calc(50% + 12px);
   transform: translateX(-50%);
   font-style: normal;
   font-size: 11px;
