@@ -43,18 +43,27 @@
   font-weight: 400;
 }
 
+[data-theme='dark'] .homeMessage span {
+  color: var(--chat-name);
+}
+
 .homeMessage p {
   width: fit-content;
   max-width: 270px;
   margin: 0;
   padding: 10px 13px;
   border-radius: 0 18px 18px 18px;
-  background: var(--surface-soft);
+  background: var(--bubble);
   color: var(--text);
   font-size: 13px;
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: -0.025em;
+}
+
+[data-theme='dark'] .homeMessage p {
+  background: var(--chat-bubble);
+  color: var(--text);
 }
 
 .homeDaysCard {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
 const NICKNAME_KEY = 'archiveNickname';
@@ -19,6 +19,7 @@ export default function HomeQuickSettings({
   const [inputValue, setInputValue] = useState(defaultNickname);
   const [darkMode, setDarkMode] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const editorRef = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {
     const savedNickname = localStorage.getItem(NICKNAME_KEY);
@@ -32,6 +33,17 @@ export default function HomeQuickSettings({
     setDarkMode(savedDarkMode);
     document.documentElement.dataset.theme = savedDarkMode ? 'dark' : 'light';
   }, []);
+
+  useEffect(() => {
+    if (!inputOpen || isClosing) return;
+
+    window.setTimeout(() => {
+      editorRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }, 120);
+  }, [inputOpen, isClosing]);
 
   function showToast(message: string) {
     setToastMessage(message);
@@ -129,6 +141,7 @@ export default function HomeQuickSettings({
 
       {inputOpen && (
         <form
+          ref={editorRef}
           className={`homeQuickEditor ${isClosing ? 'isClosing' : ''}`}
           onSubmit={submitNickname}
         >

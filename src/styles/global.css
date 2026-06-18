@@ -8,9 +8,14 @@
   --surface-soft: #f8f8fa;
   --surface-hover: #f7f7f9;
 
-  --text: #303139;
+  --text: #484950;
   --text-secondary: #62646d;
-  --text-muted: #9b9da5;
+  --text-muted: #8f919a;
+
+  --bubble: #f3f3f4;
+  --light-time: #b6b7bd;
+  --reply: #f9f9fb;
+  --reply-text: #8f919a;
 
   --border: #ededf0;
   --border-soft: #f1f1f3;
