@@ -6,6 +6,7 @@ import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
 import { getKoreanNow } from '@/lib/format';
 import { preload } from 'react-dom';
+export const dynamic = 'force-dynamic';
 
 function HeartIcon() {
   return (
