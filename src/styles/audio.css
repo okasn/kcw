@@ -85,6 +85,11 @@
   flex-shrink: 0;
 }
 
+[data-theme='dark'] .voiceActionLink {
+  background: var(--chat-reply);
+  color: var(--icon);
+}
+
 .voiceActionLink svg {
   width: 12px;
   height: 12px;
@@ -95,7 +100,6 @@
   stroke-linejoin: round;
 }
 
-/* 기본 음성 버블: 채팅에서도 쓰이므로 길게 잡으면 안 됨 */
 .voiceBubble {
   width: fit-content;
   min-width: 112px;
@@ -117,7 +121,11 @@
     opacity 140ms ease;
 }
 
-/* 음성 페이지 카드 안에서만 조금 넓게 */
+[data-theme='dark'] .voiceBubble {
+  background: var(--chat-bubble);
+  color: var(--text);
+}
+
 .voiceMiniCard .voiceBubble {
   width: 100%;
   max-width: none;
@@ -125,6 +133,11 @@
 }
 
 .voiceBubble.isPlaying {
+  background: rgba(var(--primary-rgb), 0.14);
+  color: var(--accent-text);
+}
+
+[data-theme='dark'] .voiceBubble.isPlaying {
   background: rgba(var(--primary-rgb), 0.14);
   color: var(--accent-text);
 }
@@ -160,4 +173,8 @@
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
   line-height: 1;
+}
+
+[data-theme='dark'] .voiceDuration {
+  color: var(--text);
 }

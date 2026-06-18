@@ -110,8 +110,6 @@ a {
   border-radius: var(--radius-md);
 }
 
-
-/* shared content blocks */
 .sectionCard {
   margin-bottom: 12px;
   border: 1px solid var(--border);
@@ -134,8 +132,6 @@ a {
   font-weight: 700;
   letter-spacing: -0.04em;
 }
-
-/* navigation */
 
 .siteNav {
   position: fixed;
@@ -189,8 +185,6 @@ a {
   font-weight: 600;
 }
 
-/* desktop */
-
 @media (min-width: 1300px) {
   .siteNav {
     left: 0;
@@ -230,8 +224,6 @@ a {
     background: rgba(var(--primary-rgb), 0.10);
   }
 }
-
-/* tablet */
 
 @media (min-width: 700px) and (max-width: 1299px) {
   .page {
@@ -285,8 +277,6 @@ a {
   }
 }
 
-/* mobile */
-
 @media (max-width: 699px) {
   .mobileFrame {
     padding-bottom: 72px;
@@ -339,8 +329,6 @@ a {
   }
 }
 
-
-/* shared toolbar / filter */
 .filterToolbar,
 .compactHeader,
 .voiceCompactHeader {
@@ -990,8 +978,6 @@ a {
     transform: translate(-50%, 6px);
   }
 }
-
-/* TOP 버튼 */
 
 .scrollTopButton {
   position: fixed;
