@@ -164,11 +164,11 @@ export default async function HomePage() {
               </div>
 
               <div className="homeNoticeLine">
-                <p>채팅 안의 사진은 한 번 클릭 후 저장해주세요</p>
+                <p>채팅 안의 사진은 클릭 후 저장해주세요</p>
               </div>
 
               <div className="homeNoticeLine">
-                <p>메시지 내용으로 검색할 수 있습니다</p>
+                <p>메시지 내용으로 검색할 수 있어요</p>
               </div>
 
             </div>
