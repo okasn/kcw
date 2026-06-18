@@ -1,7 +1,7 @@
 .chatPage,
 .chatDetail {
   min-height: 100vh;
-  background: #fff;
+  background: var(--bg);
 }
 
 .chatScreen {
@@ -19,10 +19,10 @@
 .dateDivider span {
   padding: 7px 15px;
   border-radius: 999px;
-  background: #f7f7f9;
-  color: #9a9ca4;
-  font-size: 10px;
-  font-weight: 300;
+  background: var(--surface-soft);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
@@ -56,9 +56,9 @@
 
 .senderName {
   margin: 0 0 5px;
-  font-size: 10px;
-  color: #8d8f98;
-  font-weight: 300;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -72,9 +72,9 @@
   max-width: 240px;
   padding: 10px 13px;
   border-radius: 0 18px 18px 18px;
-  background: #f2f2f4;
-  color: #3f4149;
-  font-size: 12px;
+  background: var(--surface-soft);
+  color: var(--text);
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.45;
   white-space: pre-wrap;
@@ -84,9 +84,9 @@
 .messageTime {
   flex: 0 0 auto;
   padding-bottom: 3px;
-  color: #b5b6bd;
-  font-size: 10.5px;
-  font-weight: 300;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 400;
   white-space: nowrap;
 }
 
@@ -102,7 +102,7 @@
 .replyPreview i {
   width: 3px;
   border-radius: 999px;
-  background: #eeeef1;
+  background: var(--border-soft);
   flex-shrink: 0;
 }
 
@@ -110,10 +110,10 @@
   margin: 0;
   padding: 9px 12px;
   border-radius: 15px;
-  background: #f7f7f9;
-  color: #8f9199;
-  font-size: 10px;
-  font-weight: 300;
+  background: var(--surface-soft);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -145,7 +145,6 @@
   border: 0;
   background: transparent;
   border-radius: 18px;
-  overflow: hidden;
   cursor: pointer;
 }
 
@@ -156,7 +155,7 @@
   max-height: 340px;
   object-fit: cover;
   border-radius: 18px;
-  background: #f3f3f5;
+  background: var(--surface-soft);
 }
 
 .emoticonImage {
@@ -222,7 +221,7 @@
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: #f2f2f4;
+  background: var(--surface-soft);
 }
 
 .dayThumb img {
@@ -237,13 +236,12 @@
   height: 100%;
   display: grid;
   place-items: center;
-  background: #f2f2f4;
+  background: var(--surface-soft);
 }
 
 .dayEmpty span {
   font-size: 18px;
-  font-weight: 500;
-  color: #b6b7bd;
+  color: var(--text-muted);
   letter-spacing: -0.05em;
 }
 
@@ -283,17 +281,17 @@
 .dayInfo strong {
   display: block;
   margin-bottom: 4px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  color: #303139;
+  color: var(--text);
   letter-spacing: -0.03em;
 }
 
 .dayInfo span {
   display: block;
-  font-size: 9.5px;
-  font-weight: 300;
-  color: #9b9da5;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
   line-height: 1.35;
   letter-spacing: -0.02em;
 }
@@ -317,9 +315,9 @@
   min-width: 0;
   height: 38px;
   padding: 0 12px;
-  border: 1px solid #f0f0f2;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--surface);
   text-decoration: none;
   color: inherit;
   display: inline-flex;
@@ -330,7 +328,7 @@
 .dayNavCard strong {
   font-size: 11px;
   font-weight: 400;
-  color: #6f7179;
+  color: var(--text-secondary);
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
@@ -339,7 +337,7 @@
   width: 15px;
   height: 15px;
   fill: none;
-  stroke: #b2b4bb;
+  stroke: var(--text-muted);
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -362,32 +360,32 @@
 
 @keyframes targetMessageGlow {
   0% {
-    background-color: rgba(251, 72, 102, 0.14);
-    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+    background-color: rgba(var(--primary-rgb), 0.22);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
   }
 
   45% {
-    box-shadow: 0 0 0 5px rgba(251, 72, 102, 0.08);
+    box-shadow: 0 0 0 5px rgba(var(--primary-rgb), 0.16);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
   }
 }
 
 @keyframes targetMediaGlow {
   0% {
-    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
     filter: brightness(1.04);
   }
 
   45% {
-    box-shadow: 0 0 0 5px rgba(251, 72, 102, 0.18);
+    box-shadow: 0 0 0 5px rgba(var(--primary-rgb), 0.24);
     filter: brightness(1.04);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(251, 72, 102, 0);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
     filter: brightness(1);
   }
 }

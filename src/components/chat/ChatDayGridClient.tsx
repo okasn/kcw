@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUp, ListFilter } from 'lucide-react';
 import type { DayGroup } from '@/lib/getArchiveData';
@@ -19,6 +19,7 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
   const [sort, setSort] = useState<SortMode>('newest');
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [showTop, setShowTop] = useState(false);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -26,7 +27,9 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (typeof parsed.filterOpen === 'boolean') setFilterOpen(parsed.filterOpen);
+        if (typeof parsed.filterOpen === 'boolean') {
+          setFilterOpen(parsed.filterOpen);
+        }
         if (typeof parsed.selectedYear === 'string') setSelectedYear(parsed.selectedYear);
         if (typeof parsed.selectedMonth === 'string') setSelectedMonth(parsed.selectedMonth);
         if (parsed.sort === 'newest' || parsed.sort === 'oldest') setSort(parsed.sort);
@@ -90,6 +93,36 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
 
   const visibleDays = filteredDays.slice(0, visibleCount);
 
+  useEffect(() => {
+    const target = loadMoreRef.current;
+
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (
+          entry.isIntersecting &&
+          visibleCount < filteredDays.length
+        ) {
+          setVisibleCount((value) => value + PAGE_SIZE);
+        }
+      },
+      {
+        rootMargin: '600px 0px',
+      }
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [visibleCount, filteredDays.length]);
+
+  function toggleFilter() {
+    setFilterOpen((value) => !value);
+  }
+
   function resetList() {
     setVisibleCount(PAGE_SIZE);
   }
@@ -134,7 +167,7 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
           <button
             type="button"
             className={`filterIconButton ${filterOpen || hasFilter ? 'isActive' : ''}`}
-            onClick={() => setFilterOpen((v) => !v)}
+            onClick={toggleFilter}
             aria-label="필터"
           >
             <ListFilter size={15} strokeWidth={1.8} />
@@ -142,63 +175,65 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
         </div>
       </section>
 
-      {filterOpen && (
-        <section className="chipPanel">
-          <div className="chipGroup">
-            <button
-              type="button"
-              className={selectedYear === 'all' ? 'isActive' : ''}
-              onClick={() => changeYear('all')}
-            >
-              전체 년도
-            </button>
-
-            {years.map((year) => (
+      <div className={`filterFrame ${filterOpen ? 'isOpen' : ''}`}>
+        <div className="filterFrameInner">
+          <section className="chipPanel">
+            <div className="chipGroup">
               <button
                 type="button"
-                key={year}
-                className={selectedYear === year ? 'isActive' : ''}
-                onClick={() => changeYear(year)}
+                className={selectedYear === 'all' ? 'isActive' : ''}
+                onClick={() => changeYear('all')}
               >
-                {Number(year)}년
+                전체 년도
               </button>
-            ))}
-          </div>
 
-          <div className="chipGroup">
-            <button
-              type="button"
-              className={selectedMonth === 'all' ? 'isActive' : ''}
-              onClick={() => {
-                setSelectedMonth('all');
-                resetList();
-              }}
-            >
-              전체 월
-            </button>
+              {years.map((year) => (
+                <button
+                  type="button"
+                  key={year}
+                  className={selectedYear === year ? 'isActive' : ''}
+                  onClick={() => changeYear(year)}
+                >
+                  {Number(year)}년
+                </button>
+              ))}
+            </div>
 
-            {months.map((month) => (
+            <div className="chipGroup">
               <button
                 type="button"
-                key={month}
-                className={selectedMonth === month ? 'isActive' : ''}
+                className={selectedMonth === 'all' ? 'isActive' : ''}
                 onClick={() => {
-                  setSelectedMonth(month);
+                  setSelectedMonth('all');
                   resetList();
                 }}
               >
-                {Number(month)}월
+                전체 월
               </button>
-            ))}
-          </div>
 
-          {hasFilter && (
-            <button type="button" className="resetFilterButton" onClick={clearFilter}>
-              필터 초기화
-            </button>
-          )}
-        </section>
-      )}
+              {months.map((month) => (
+                <button
+                  type="button"
+                  key={month}
+                  className={selectedMonth === month ? 'isActive' : ''}
+                  onClick={() => {
+                    setSelectedMonth(month);
+                    resetList();
+                  }}
+                >
+                  {Number(month)}월
+                </button>
+              ))}
+            </div>
+
+            {hasFilter && (
+              <button type="button" className="resetFilterButton" onClick={clearFilter}>
+                필터 초기화
+              </button>
+            )}
+          </section>
+        </div>
+      </div>
 
       <div className="dayGrid">
         {visibleDays.map((day) => (
@@ -237,13 +272,7 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
       </div>
 
       {visibleCount < filteredDays.length && (
-        <button
-          type="button"
-          className="loadMoreButton"
-          onClick={() => setVisibleCount((value) => value + PAGE_SIZE)}
-        >
-          더보기
-        </button>
+        <div ref={loadMoreRef} className="loadMoreTrigger" />
       )}
 
       {!filteredDays.length && (

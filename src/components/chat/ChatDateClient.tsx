@@ -56,32 +56,45 @@ export default function ChatDateClient({
 
     if (messageId) {
       setTargetMessageId(messageId);
+
       window.setTimeout(() => {
-        setTargetMessageId((current) => (current === messageId ? null : current));
+        setTargetMessageId((current) =>
+          current === messageId ? null : current
+        );
       }, 2200);
     }
 
-    let count = 0;
+    let attempts = 0;
 
-    function scrollToHashTarget() {
+    const scrollToTarget = () => {
       const el = document.getElementById(targetId);
 
-      if (el) {
-        el.scrollIntoView({
-          behavior: 'auto',
-          block: 'center',
-        });
+      if (!el) {
+        attempts += 1;
+
+        if (attempts < 30) {
+          window.setTimeout(scrollToTarget, 120);
+        }
+
         return;
       }
 
-      count += 1;
+      el.scrollIntoView({
+        behavior: 'auto',
+        block: 'center',
+      });
 
-      if (count < 20) {
-        window.setTimeout(scrollToHashTarget, 120);
-      }
-    }
+      requestAnimationFrame(() => {
+        window.setTimeout(() => {
+          el.scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+          });
+        }, 350);
+      });
+    };
 
-    window.setTimeout(scrollToHashTarget, 80);
+    window.setTimeout(scrollToTarget, 80);
   }, [messages]);
 
   useEffect(() => {

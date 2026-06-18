@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import SiteNav from '@/components/layout/SiteNav';
 import HomeRecommendInfo from '@/components/home/HomeRecommendInfo';
-import { Settings } from 'lucide-react';
+import HomeQuickSettings from '@/components/home/HomeQuickSettings';
 import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
 import { getKoreanNow } from '@/lib/format';
@@ -103,15 +103,10 @@ export default async function HomePage() {
 
           {homeMemories.length > 0 && (
             <section className="homeSameDayCard">
-              <div className="homeSameDayHead">
-                <div className="homeSameDayTitle">
-                  <span>오늘의 추천 메시지</span>
-                  <HomeRecommendInfo />
-                </div>
-
-                
+              <div className="homeSectionTitle">
+                <span>오늘의 추천 메시지</span>
+                <HomeRecommendInfo />
               </div>
-
               <div className="homeSameDayList">
                 {homeMemories.map((day) => (
                   <Link href={`/chat/${day.date}`} className="homeSameDayItem" key={day.date}>
@@ -139,19 +134,17 @@ export default async function HomePage() {
           )}
 
           <section className="homeNoticeCard">
-            <div className="homeNoticeHead">
-              <h2>NOTICE</h2>
+            <div className="homeSectionTitle">
+              <h2>공지</h2>
             </div>
 
             <div className="homeNoticeBody">
               <div className="homeNoticeLine">
-                <p>2024.05.11 ~ 2026.06.30 백업</p>
+                <p><strong>악의적 사용을 금지합니다</strong></p>
               </div>
-
+              
               <div className="homeNoticeLine">
-                <p>
-                  기본 애칭은 <strong>{archive.nickname}</strong>입니다
-                </p>
+                <p>2024.05.11 ~ 2026.06.30 백업</p>
               </div>
 
               <div className="homeNoticeLine">
@@ -159,29 +152,16 @@ export default async function HomePage() {
               </div>
 
               <div className="homeNoticeLine">
-                <p>메시지 내용으로 검색할 수 있어요</p>
+                <p>메시지 내용으로 검색할 수 있습니다</p>
               </div>
 
-              <div className="homeNoticeLine">
-                <p><strong>악의적 사용을 금지합니다</strong></p>
-              </div>
-
-              <div className="homeNoticeLine homeNoticeWarning">
-                <p>
-                  <strong className="homeNoticeSettingText">설정에서 내 애칭을 변경할 수 있어요</strong>
-                </p>
-              </div>
             </div>
           </section>
 
-          <Link href="/setting" className="homeMobileSettingCard">
-            <div>
-              <Settings size={16} strokeWidth={1.8} />
-            </div>
+          <HomeQuickSettings
+            defaultNickname={archive.nickname}
+          />
 
-            <span>설정</span>
-            <p>내 애칭을 변경할 수 있어요</p>
-          </Link>
         </section>
       </div>
     </main>

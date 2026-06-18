@@ -10,7 +10,6 @@ const navItems = [
   { href: '/chat', label: '채팅', icon: MessageCircleMore },
   { href: '/gallery', label: '갤러리', icon: Images },
   { href: '/voices', label: '음성메시지', icon: Voicemail },
-  { href: '/setting', label: '설정', icon: Settings },
 ];
 
 function isActive(pathname: string, href: string) {

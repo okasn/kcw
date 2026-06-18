@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowUp, Search, X } from 'lucide-react';
@@ -18,6 +18,7 @@ const RECENT_KEY = 'recentSearches';
 const ACTIVE_SCROLL_KEY = 'activeSearchScrollY';
 const RESTORE_SEARCH_KEY = 'restoreSearchOnReturn';
 const MAX_RECENT = 8;
+const PAGE_SIZE = 50;
 
 function formatDate(iso: string) {
   const d = new Date(iso);
@@ -67,6 +68,8 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
   const [recent, setRecent] = useState<string[]>([]);
   const [showTop, setShowTop] = useState(false);
   const [restoreScrollY, setRestoreScrollY] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     try {
@@ -115,6 +118,8 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
     );
   }, [messages, query]);
 
+  const visibleResults = results.slice(0, visibleCount);
+
   useEffect(() => {
     if (restoreScrollY === null) return;
 
@@ -123,6 +128,36 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
       setRestoreScrollY(null);
     });
   }, [restoreScrollY, results.length]);
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [query]);
+
+  useEffect(() => {
+    const target = loadMoreRef.current;
+
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (
+          entry.isIntersecting &&
+          visibleCount < results.length
+        ) {
+          setVisibleCount((value) => value + PAGE_SIZE);
+        }
+      },
+      {
+        rootMargin: '600px 0px',
+      }
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [visibleCount, results.length]);
 
   function saveRecent(keyword: string) {
     const value = keyword.trim();
@@ -229,7 +264,7 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
       )}
 
       <div className="searchResultList">
-        {results.map((msg) => (
+        {visibleResults.map((msg) => (
           <Link
             href={withSearchParams(msg.chatHref, query)}
             className="searchResultItem"
@@ -253,6 +288,9 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
           </Link>
         ))}
       </div>
+      {visibleCount < results.length && (
+        <div ref={loadMoreRef} className="loadMoreTrigger" />
+      )}
 
       {query && !results.length && (
         <p className="emptyStateText">해당 검색어가 포함된 채팅이 없습니다.</p>

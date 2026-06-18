@@ -1,27 +1,32 @@
 .mediaTabs {
   display: flex;
-  gap: 6px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .mediaTabs button {
-  height: 34px;
-  padding: 0 13px;
-  border: 1px solid #ededf0;
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #fff;
-  color: #8f9199;
-  font-size: 11px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 12px;
   font-weight: 400;
   cursor: pointer;
   transition:
     background-color 140ms ease,
     border-color 140ms ease,
-    color 140ms ease;
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+.mediaTabs button:hover {
+  background: var(--surface-soft);
 }
 
 .mediaTabs button.isActive {
-  background: #303139;
-  border-color: #303139;
-  color: #fff;
+  background: var(--primary-light);
+  border-color: var(--primary-border);
+  color: var(--accent-text);
 }

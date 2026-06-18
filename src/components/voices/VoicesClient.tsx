@@ -35,50 +35,50 @@ function formatShortDate(iso: string) {
 
 export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) {
   const [hydrated, setHydrated] = useState(false);
-const [filterOpen, setFilterOpen] = useState(false);
-const [sort, setSort] = useState<SortMode>('newest');
-const [year, setYear] = useState('all');
-const [month, setMonth] = useState('all');
-const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-const [showTop, setShowTop] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [sort, setSort] = useState<SortMode>('newest');
+  const [year, setYear] = useState('all');
+  const [month, setMonth] = useState('all');
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
-  const saved = localStorage.getItem('voiceFilters');
+    const saved = localStorage.getItem('voiceFilters');
 
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-      if (typeof parsed.filterOpen === 'boolean') setFilterOpen(parsed.filterOpen);
-      if (parsed.sort === 'newest' || parsed.sort === 'oldest') setSort(parsed.sort);
-      if (typeof parsed.year === 'string') setYear(parsed.year);
-      if (typeof parsed.month === 'string') setMonth(parsed.month);
-    } catch {}
-  }
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (typeof parsed.filterOpen === 'boolean') setFilterOpen(parsed.filterOpen);
+        if (parsed.sort === 'newest' || parsed.sort === 'oldest') setSort(parsed.sort);
+        if (typeof parsed.year === 'string') setYear(parsed.year);
+        if (typeof parsed.month === 'string') setMonth(parsed.month);
+      } catch {}
+    }
 
-  setHydrated(true);
-}, []);
+    setHydrated(true);
+  }, []);
 
-useEffect(() => {
-  if (!hydrated) return;
+  useEffect(() => {
+    if (!hydrated) return;
 
-  localStorage.setItem(
-    'voiceFilters',
-    JSON.stringify({ filterOpen, sort, year, month })
-  );
-}, [hydrated, filterOpen, sort, year, month]);
+    localStorage.setItem(
+      'voiceFilters',
+      JSON.stringify({ filterOpen, sort, year, month })
+    );
+  }, [hydrated, filterOpen, sort, year, month]);
 
-useEffect(() => {
-  function onScroll() {
-    setShowTop(window.scrollY > 360);
-  }
+  useEffect(() => {
+    function onScroll() {
+      setShowTop(window.scrollY > 360);
+    }
 
-  onScroll();
-  window.addEventListener('scroll', onScroll);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
 
-  return () => {
-    window.removeEventListener('scroll', onScroll);
-  };
-}, []);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   const years = useMemo(() => {
     return Array.from(new Set(voices.map((v) => v.createdAt.slice(0, 4)))).sort(
@@ -112,6 +112,10 @@ useEffect(() => {
 
   const visibleVoices = filteredVoices.slice(0, visibleCount);
 
+  function toggleFilter() {
+    setFilterOpen((value) => !value);
+  }
+
   function resetList() {
     setVisibleCount(PAGE_SIZE);
   }
@@ -144,7 +148,7 @@ useEffect(() => {
           <button
             type="button"
             className={`voiceFilterIcon ${filterOpen || hasFilter ? 'isActive' : ''}`}
-            onClick={() => setFilterOpen((v) => !v)}
+            onClick={toggleFilter}
             aria-label="필터"
           >
             <ListFilter size={15} strokeWidth={1.8} />
@@ -152,69 +156,71 @@ useEffect(() => {
         </div>
       </section>
 
-      {filterOpen && (
-        <section className="voiceChipPanel">
-          <div className="voiceChipGroup">
-            <button
-              type="button"
-              className={year === 'all' ? 'isActive' : ''}
-              onClick={() => {
-                setYear('all');
-                resetList();
-              }}
-            >
-              전체 년도
-            </button>
-
-            {years.map((y) => (
+      <div className={`filterFrame ${filterOpen ? 'isOpen' : ''}`}>
+        <div className="filterFrameInner">
+          <section className="voiceChipPanel">
+            <div className="voiceChipGroup">
               <button
-                key={y}
                 type="button"
-                className={year === y ? 'isActive' : ''}
+                className={year === 'all' ? 'isActive' : ''}
                 onClick={() => {
-                  setYear(y);
+                  setYear('all');
                   resetList();
                 }}
               >
-                {Number(y)}년
+                전체 년도
               </button>
-            ))}
-          </div>
 
-          <div className="voiceChipGroup month">
-            <button
-              type="button"
-              className={month === 'all' ? 'isActive' : ''}
-              onClick={() => {
-                setMonth('all');
-                resetList();
-              }}
-            >
-              전체 월
-            </button>
+              {years.map((y) => (
+                <button
+                  key={y}
+                  type="button"
+                  className={year === y ? 'isActive' : ''}
+                  onClick={() => {
+                    setYear(y);
+                    resetList();
+                  }}
+                >
+                  {Number(y)}년
+                </button>
+              ))}
+            </div>
 
-            {months.map((m) => (
+            <div className="voiceChipGroup month">
               <button
-                key={m}
                 type="button"
-                className={month === m ? 'isActive' : ''}
+                className={month === 'all' ? 'isActive' : ''}
                 onClick={() => {
-                  setMonth(m);
+                  setMonth('all');
                   resetList();
                 }}
               >
-                {Number(m)}월
+                전체 월
               </button>
-            ))}
-          </div>
 
-          {hasFilter && (
-            <button type="button" className="voiceResetButton" onClick={clearFilter}>
-              필터 초기화
-            </button>
-          )}
-        </section>
-      )}
+              {months.map((m) => (
+                <button
+                  key={m}
+                  type="button"
+                  className={month === m ? 'isActive' : ''}
+                  onClick={() => {
+                    setMonth(m);
+                    resetList();
+                  }}
+                >
+                  {Number(m)}월
+                </button>
+              ))}
+            </div>
+
+            {hasFilter && (
+              <button type="button" className="voiceResetButton" onClick={clearFilter}>
+                필터 초기화
+              </button>
+            )}
+          </section>
+        </div>
+      </div>
 
       <div className="voiceGrid">
         {visibleVoices.map((voice) => (

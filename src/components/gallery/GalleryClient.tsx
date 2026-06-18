@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { formatDuration } from '@/lib/format';
 import MediaLightbox, { type LightboxItem } from '@/components/media/MediaLightbox';
 import { ArrowUp, ListFilter, Play } from 'lucide-react';
@@ -17,6 +17,7 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [showTop, setShowTop] = useState(false);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const filteredItems = useMemo(() => {
     const result =
@@ -44,6 +45,36 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
       window.removeEventListener('scroll', onScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const target = loadMoreRef.current;
+
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (
+          entry.isIntersecting &&
+          visibleCount < filteredItems.length
+        ) {
+          setVisibleCount((value) => value + PAGE_SIZE);
+        }
+      },
+      {
+        rootMargin: '600px 0px',
+      }
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [visibleCount, filteredItems.length]);
+
+  function toggleFilter() {
+    setFilterOpen((value) => !value);
+  }
 
   function changeType(type: MediaType) {
     setSelectedType(type);
@@ -74,7 +105,7 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
           <button
             type="button"
             className={`filterIconButton ${filterOpen || hasFilter ? 'isActive' : ''}`}
-            onClick={() => setFilterOpen((value) => !value)}
+            onClick={toggleFilter}
             aria-label="필터"
           >
             <ListFilter size={15} strokeWidth={1.8} />
@@ -82,35 +113,37 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
         </div>
       </section>
 
-      {filterOpen && (
-        <section className="chipPanel">
-          <div className="chipGroup">
-            <button
-              type="button"
-              className={selectedType === 'all' ? 'isActive' : ''}
-              onClick={() => changeType('all')}
-            >
-              전체
-            </button>
+      <div className={`filterFrame ${filterOpen ? 'isOpen' : ''}`}>
+        <div className="filterFrameInner">
+          <section className="chipPanel">
+            <div className="chipGroup">
+              <button
+                type="button"
+                className={selectedType === 'all' ? 'isActive' : ''}
+                onClick={() => changeType('all')}
+              >
+                전체
+              </button>
 
-            <button
-              type="button"
-              className={selectedType === 'image' ? 'isActive' : ''}
-              onClick={() => changeType('image')}
-            >
-              사진
-            </button>
+              <button
+                type="button"
+                className={selectedType === 'image' ? 'isActive' : ''}
+                onClick={() => changeType('image')}
+              >
+                사진
+              </button>
 
-            <button
-              type="button"
-              className={selectedType === 'video' ? 'isActive' : ''}
-              onClick={() => changeType('video')}
-            >
-              영상
-            </button>
-          </div>
-        </section>
-      )}
+              <button
+                type="button"
+                className={selectedType === 'video' ? 'isActive' : ''}
+                onClick={() => changeType('video')}
+              >
+                영상
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
 
       <div className="galleryGrid">
         {visibleItems.map((item, index) => (
@@ -118,13 +151,27 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
             className="galleryItem card"
             key={item.id}
             type="button"
-            onClick={() => setSelectedIndex(index)}
+            onClick={() => {
+              const actualIndex = filteredItems.findIndex(
+                (media) => media.id === item.id
+              );
+
+              setSelectedIndex(actualIndex);
+            }}
           >
             <img
               src={item.thumb || item.url}
               alt=""
               loading="lazy"
+              ref={(node) => {
+                if (node?.complete) {
+                  node.classList.add('isLoaded');
+                }
+              }}
               onLoad={(e) => {
+                e.currentTarget.classList.add('isLoaded');
+              }}
+              onError={(e) => {
                 e.currentTarget.classList.add('isLoaded');
               }}
             />
@@ -142,13 +189,7 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
       </div>
 
       {visibleCount < filteredItems.length && (
-        <button
-          type="button"
-          className="loadMoreButton"
-          onClick={() => setVisibleCount((value) => value + PAGE_SIZE)}
-        >
-          더보기
-        </button>
+        <div ref={loadMoreRef} style={{ height: 1 }} />
       )}
 
       {!filteredItems.length && (
@@ -166,7 +207,7 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
 
       {selectedIndex !== null && (
         <MediaLightbox
-          items={visibleItems}
+          items={filteredItems}
           initialIndex={selectedIndex}
           onClose={() => setSelectedIndex(null)}
         />
