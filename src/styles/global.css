@@ -26,6 +26,32 @@
   --radius-xl: 24px;
 }
 
+[data-theme='dark'] {
+  --bg: #17181b;
+  --surface: #202127;
+  --surface-soft: #26282e;
+  --surface-hover: #2d3037;
+
+  --text: #cacbd0;
+  --text-secondary: #a7a9b1;
+  --text-muted: #7c7e88;
+
+  --border: #333640;
+  --border-soft: #26282e;
+
+  --primary: #c7a3e0;
+  --primary-rgb: 199, 163, 224;
+  --primary-light: rgba(199, 163, 224, 0.14);
+  --primary-border: rgba(199, 163, 224, 0.28);
+  --accent-text: #d9b7ef;
+
+  --chat-bubble: #36383f;
+  --chat-reply: #26282e;
+  --chat-name: #7c7e88;
+  --chat-time: #575a63;
+  --icon: #e6e8ee;
+}
+
 html,
 body {
   margin: 0;
@@ -113,6 +139,10 @@ a {
   backdrop-filter: blur(18px);
 }
 
+[data-theme='dark'] .siteNav {
+  background: rgba(23, 24, 27, 0.88);
+}
+
 .siteNavLogo {
   display: flex;
   align-items: center;
@@ -139,7 +169,7 @@ a {
 .siteNavItem {
   position: relative;
   text-decoration: none;
-  color: #8b8d96;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
 }
@@ -283,7 +313,7 @@ a {
 
   .siteNavItem {
     justify-content: center;
-    color: #8b8d96;
+    color: var(--text-muted);
   }
 
   .siteNavItem span {
@@ -384,7 +414,6 @@ a {
 .filterIconButton:hover,
 .archiveFilterIcon:hover,
 .voiceFilterIcon:hover {
-  transform: scale(1.04);
   background: var(--surface-soft);
 }
 
@@ -544,6 +573,15 @@ a {
     transparent
   );
   animation: skeletonShimmer 1.25s infinite;
+}
+
+[data-theme='dark'] .skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
 }
 
 @keyframes skeletonShimmer {
@@ -971,6 +1009,10 @@ a {
   transition:
     opacity 220ms ease,
     transform 220ms ease;
+}
+
+[data-theme='dark'] .scrollTopButton {
+  background: rgba(32, 33, 39, 0.78);
 }
 
 .scrollTopButton.isVisible {

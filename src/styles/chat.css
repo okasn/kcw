@@ -26,6 +26,11 @@
   letter-spacing: -0.01em;
 }
 
+[data-theme='dark'] .dateDivider span {
+  background: var(--chat-reply);
+  color: var(--chat-name);
+}
+
 /* 메시지 */
 
 .messageItem {
@@ -62,6 +67,10 @@
   line-height: 1.2;
 }
 
+[data-theme='dark'] .senderName {
+  color: var(--chat-name);
+}
+
 .messageRow {
   display: flex;
   align-items: flex-end;
@@ -81,6 +90,11 @@
   word-break: break-word;
 }
 
+[data-theme='dark'] .textBubble {
+  background: var(--chat-bubble);
+  color: var(--text);
+}
+
 .messageTime {
   flex: 0 0 auto;
   padding-bottom: 3px;
@@ -88,6 +102,10 @@
   font-size: 11px;
   font-weight: 400;
   white-space: nowrap;
+}
+
+[data-theme='dark'] .messageTime {
+  color: var(--chat-time);
 }
 
 /* 답장 */
@@ -106,6 +124,10 @@
   flex-shrink: 0;
 }
 
+[data-theme='dark'] .replyPreview i {
+  background: var(--chat-reply);
+}
+
 .replyPreview p {
   margin: 0;
   padding: 9px 12px;
@@ -115,6 +137,11 @@
   font-size: 11px;
   font-weight: 400;
   line-height: 1.4;
+}
+
+[data-theme='dark'] .replyPreview p {
+  background: var(--chat-reply);
+  color: var(--chat-name);
 }
 
 .replyPreview p.hasEmoticon {
@@ -346,6 +373,10 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
+}
+
+[data-theme='dark'] .dayNavCard svg {
+  stroke: var(--icon);
 }
 
 .dayNavCard.next {

@@ -146,19 +146,10 @@
     transform 160ms ease;
 }
 
-
-.homeQuickTheme:hover {
-  transform: scale(1.03);
-}
-
 .homeQuickTheme svg {
   width: 16px;
   height: 16px;
   color: var(--text-muted);
-}
-
-.homeQuickTheme.isActive svg {
-  color: var(--accent-text);
 }
 
 .homeQuickEditor {
@@ -308,6 +299,10 @@
   flex-shrink: 0;
   object-fit: cover;
   background: #f1f1f4;
+}
+
+[data-theme='dark'] .homeSameDayEmpty {
+  background: var(--surface);
 }
 
 .homeSameDayEmpty {

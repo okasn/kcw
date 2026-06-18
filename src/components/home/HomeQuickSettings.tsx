@@ -20,6 +20,19 @@ export default function HomeQuickSettings({
   const [darkMode, setDarkMode] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
 
+  useEffect(() => {
+    const savedNickname = localStorage.getItem(NICKNAME_KEY);
+    const savedDarkMode = localStorage.getItem(DARKMODE_KEY) === 'true';
+
+    if (savedNickname) {
+      setNickname(savedNickname);
+      setInputValue(savedNickname);
+    }
+
+    setDarkMode(savedDarkMode);
+    document.documentElement.dataset.theme = savedDarkMode ? 'dark' : 'light';
+  }, []);
+
   function showToast(message: string) {
     setToastMessage(message);
 
@@ -78,8 +91,7 @@ export default function HomeQuickSettings({
       String(next)
     );
 
-    document.documentElement.dataset.theme =
-      next ? 'dark' : 'light';
+    document.documentElement.dataset.theme = next ? 'dark' : 'light';
 
     showToast(
       next
