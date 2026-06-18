@@ -47,7 +47,7 @@ export default function MessageItem({
       id={`msg-${msg.id}`}
     >
       <div className="avatar">
-        <img src={currentProfile.avatar} alt="" />
+        <img src={currentProfile.avatar} alt="" decoding="async" />
       </div>
 
       <div className="messageBody">
