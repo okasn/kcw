@@ -47,7 +47,15 @@ export default function MessageItem({
       id={`msg-${msg.id}`}
     >
       <div className="avatar">
-        <img src={currentProfile.avatar} alt="" decoding="async" />
+        <img
+          src={currentProfile.avatar}
+          alt=""
+          width={38}
+          height={38}
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
+        />
       </div>
 
       <div className="messageBody">
