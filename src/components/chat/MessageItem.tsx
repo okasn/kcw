@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { preload } from 'react-dom';
 import { formatKoreanTime } from '@/lib/format';
 import { getKind, getReplyPreview } from '@/lib/message';
 import { getProfileByDate } from '@/lib/profile';
@@ -25,6 +26,10 @@ export default function MessageItem({
 }) {
   const kind = getKind(msg);
   const currentProfile = getProfileByDate(profile, msg.createdAt);
+
+  preload(currentProfile.avatar, {
+    as: 'image',
+  });
 
   const [fanNickname, setFanNickname] = useState(currentProfile.fanNickname || '딸랑단');
 
@@ -53,7 +58,7 @@ export default function MessageItem({
           width={38}
           height={38}
           loading="eager"
-          decoding="sync"
+          decoding="async"
           fetchPriority="high"
         />
       </div>
