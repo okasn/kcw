@@ -34,6 +34,39 @@ export default function MediaLightbox({
 
   const item = items[index];
 
+  function getDownloadName(target: LightboxItem) {
+    const rawName = target.url.split('/').pop()?.split('?')[0];
+
+    if (rawName) return decodeURIComponent(rawName);
+
+    const fallbackExt = target.kind === 'video' ? 'mp4' : 'jpg';
+    return `media-${target.id}.${fallbackExt}`;
+  }
+
+  async function downloadCurrentItem() {
+    if (!item?.url) return;
+
+    try {
+      const response = await fetch(item.url);
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+
+      anchor.href = objectUrl;
+      anchor.download = getDownloadName(item);
+      anchor.rel = 'noopener';
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+
+      window.setTimeout(() => {
+        URL.revokeObjectURL(objectUrl);
+      }, 1000);
+    } catch {
+      window.open(item.url, '_blank', 'noopener,noreferrer');
+    }
+  }
+
   useEffect(() => {
     setImageLoaded(false);
   }, [item?.id]);
@@ -118,15 +151,14 @@ export default function MediaLightbox({
               </Link>
             )}
 
-            <a
+            <button
               className="viewerIconBtn"
-              href={item.url}
-              download
-              target="_blank"
+              type="button"
+              onClick={downloadCurrentItem}
               aria-label="다운로드"
             >
               <Download size={18} strokeWidth={1.8} />
-            </a>
+            </button>
           </div>
         </header>
 

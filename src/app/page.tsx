@@ -117,6 +117,38 @@ export default async function HomePage() {
             </div>
           </section>
 
+          {/* {homeMemories.length > 0 && (
+            <section className="homeSameDayCard">
+              <div className="homeSectionTitle">
+                <span>오늘의 추천 메시지</span>
+                <HomeRecommendInfo />
+              </div>
+              <div className="homeSameDayList">
+                {homeMemories.map((day) => (
+                  <Link href={`/chat/${day.date}`} className="homeSameDayItem" key={day.date}>
+                    {day.thumbnail ? (
+                      <img src={day.thumbnail} alt="" />
+                    ) : (
+                      <div className="homeSameDayEmpty">
+                        <span>{day.shortDate}</span>
+                      </div>
+                    )}
+
+                    <div>
+                      <strong>{day.date.replaceAll('-', '.')}</strong>
+                      <p>
+                        메시지 {day.messageCount}
+                        {day.imageCount ? ` · 사진 ${day.imageCount}` : ''}
+                        {day.videoCount ? ` · 영상 ${day.videoCount}` : ''}
+                        {day.audioCount ? ` · 음성 ${day.audioCount}` : ''}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )} */}
+
           <section className="homeNoticeCard">
             <div className="homeSectionTitle">
               <h2>공지</h2>
