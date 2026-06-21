@@ -10,7 +10,7 @@ import '@/styles/setting.css';
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://s21kcw.com"),
+  metadataBase: new URL("https://kcws21.kr"),
 
   title: "💖💚",
   description: "트리플에스 김채원 프롬 아카이브",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "💖💚",
     description: "트리플에스 김채원 프롬 아카이브",
     type: "website",
-    url: "https://s21kcw.com",
+    url: "https://kcws21.kr",
     images: ["/og.jpg"],
   },
 
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://s21kcw.com",
+    canonical: "https://kcws21.kr",
   },
 
   robots: {

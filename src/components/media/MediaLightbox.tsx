@@ -46,25 +46,16 @@ export default function MediaLightbox({
   async function downloadCurrentItem() {
     if (!item?.url) return;
 
-    try {
-      const response = await fetch(item.url);
-      const blob = await response.blob();
-      const objectUrl = URL.createObjectURL(blob);
-      const anchor = document.createElement('a');
+    const downloadName = getDownloadName(item);
+    const proxyUrl = `/api/download?url=${encodeURIComponent(item.url)}&filename=${encodeURIComponent(downloadName)}`;
 
-      anchor.href = objectUrl;
-      anchor.download = getDownloadName(item);
-      anchor.rel = 'noopener';
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
-
-      window.setTimeout(() => {
-        URL.revokeObjectURL(objectUrl);
-      }, 1000);
-    } catch {
-      window.open(item.url, '_blank', 'noopener,noreferrer');
-    }
+    const anchor = document.createElement('a');
+    anchor.href = proxyUrl;
+    anchor.download = downloadName;
+    anchor.rel = 'noopener';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
   }
 
   useEffect(() => {

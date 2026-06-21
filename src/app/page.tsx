@@ -171,6 +171,10 @@ export default async function HomePage() {
                 <p>메시지 내용으로 검색할 수 있어요</p>
               </div>
 
+              <div className="homeNoticeLine">
+                <p>문의는 <a href="https://x.com/pupzei" target="_blank" rel="noopener noreferrer">DM</a> 또는 <a href="mailto:pupzei.cw@gmail.com">이메일</a> 부탁드립니다</p>
+              </div>
+
             </div>
           </section>
 
