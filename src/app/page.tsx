@@ -156,11 +156,17 @@ export default async function HomePage() {
 
             <div className="homeNoticeBody">
               <div className="homeNoticeLine">
-                <p><strong>악의적 사용을 금지합니다</strong></p>
+                <p><span style={{ textDecoration: 'underline' }}><strong>악의적 사용을 금지합니다</strong></span></p>
               </div>
               
               <div className="homeNoticeLine">
                 <p>2024.04.16 ~ 2026.06.30 백업</p>
+              </div>
+
+              <div className="homeNoticeLine">
+                <p>
+                  기본 애칭은 <strong>딸랑단</strong>입니다 변경 가능
+                </p>
               </div>
 
               <div className="homeNoticeLine">

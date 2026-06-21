@@ -19,6 +19,9 @@ export default function HomeQuickSettings({
   const [inputValue, setInputValue] = useState(defaultNickname);
   const [darkMode, setDarkMode] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+  const [toastClosing, setToastClosing] = useState(false);
+  const toastTimerRef = useRef<number | null>(null);
+  const toastCloseTimerRef = useRef<number | null>(null);
   const editorRef = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {
@@ -35,6 +38,18 @@ export default function HomeQuickSettings({
   }, []);
 
   useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) {
+        window.clearTimeout(toastTimerRef.current);
+      }
+
+      if (toastCloseTimerRef.current) {
+        window.clearTimeout(toastCloseTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     if (!inputOpen || isClosing) return;
 
     window.setTimeout(() => {
@@ -46,11 +61,25 @@ export default function HomeQuickSettings({
   }, [inputOpen, isClosing]);
 
   function showToast(message: string) {
+    if (toastTimerRef.current) {
+      window.clearTimeout(toastTimerRef.current);
+    }
+
+    if (toastCloseTimerRef.current) {
+      window.clearTimeout(toastCloseTimerRef.current);
+    }
+
+    setToastClosing(false);
     setToastMessage(message);
 
-    window.setTimeout(() => {
-      setToastMessage('');
-    }, 1800);
+    toastTimerRef.current = window.setTimeout(() => {
+      setToastClosing(true);
+
+      toastCloseTimerRef.current = window.setTimeout(() => {
+        setToastMessage('');
+        setToastClosing(false);
+      }, 240);
+    }, 1600);
   }
 
   function toggleNicknameEditor() {
@@ -163,7 +192,7 @@ export default function HomeQuickSettings({
       )}
 
       {toastMessage && (
-        <div className="appToast">
+        <div className={`appToast ${toastClosing ? 'isClosing' : ''}`}>
           {toastMessage}
         </div>
       )}
