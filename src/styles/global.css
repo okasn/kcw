@@ -279,7 +279,7 @@ a {
 
 @media (max-width: 699px) {
   .mobileFrame {
-    padding-bottom: 72px;
+    padding-bottom: 50px;
   }
 
   .siteNav {
@@ -998,8 +998,9 @@ a {
   transform: translateY(10px) scale(0.96);
   pointer-events: none;
   transition:
-    opacity 220ms ease,
-    transform 220ms ease;
+  opacity 220ms ease,
+  transform 220ms ease,
+  bottom 260ms ease;
 }
 
 [data-theme='dark'] .scrollTopButton {
@@ -1025,6 +1026,10 @@ a {
 @media (max-width: 699px) {
   .scrollTopButton {
     right: 14px;
-    bottom: calc(76px + env(safe-area-inset-bottom));
+    bottom: calc(var(--mobile-nav-offset, 76px) + env(safe-area-inset-bottom));
   }
+
+  .pageInner {
+  padding: 36px 16px 20px;
+}
 }

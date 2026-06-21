@@ -1,8 +1,9 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, MessageCircleMore, Images, Voicemail, Settings, Search, GalleryVerticalEnd } from 'lucide-react';
+import { Home, MessageCircleMore, Images, Voicemail, Search } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: '홈', icon: Home },
@@ -20,8 +21,58 @@ function isActive(pathname: string, href: string) {
 export default function SiteNav() {
   const pathname = usePathname();
 
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+    document.documentElement.style.setProperty('--mobile-nav-offset', '76px');
+
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      const scrollDifference = currentScrollY - lastScrollY.current;
+      const isMobile = window.matchMedia('(max-width: 699px)').matches;
+
+      if (!isMobile) {
+        setIsHidden(false);
+        document.documentElement.style.setProperty('--mobile-nav-offset', '20px');
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      if (currentScrollY < 24) {
+        setIsHidden(false);
+        document.documentElement.style.setProperty('--mobile-nav-offset', '76px');
+      } else if (scrollDifference > 6) {
+        setIsHidden(true);
+        document.documentElement.style.setProperty('--mobile-nav-offset', '20px');
+      } else if (scrollDifference < -6) {
+        setIsHidden(false);
+        document.documentElement.style.setProperty('--mobile-nav-offset', '76px');
+      }
+
+      lastScrollY.current = currentScrollY;
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="siteNav" aria-label="사이트 메뉴">
+    <nav
+      className={`siteNav ${isHidden ? 'isHidden' : ''}`}
+      aria-label="사이트 메뉴"
+      style={{
+        transform: isHidden ? 'translateY(calc(100% + 18px))' : 'translateY(0)',
+        transition: 'transform 260ms ease',
+        willChange: 'transform',
+      }}
+    >
 
       <div className="siteNavItems">
         {navItems.map((item) => {
