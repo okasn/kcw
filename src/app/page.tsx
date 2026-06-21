@@ -172,7 +172,7 @@ export default async function HomePage() {
               </div>
 
               <div className="homeNoticeLine">
-                <p>문의는 <a href="https://x.com/pupzei" target="_blank" rel="noopener noreferrer">DM</a> 또는 <a href="mailto:pupzei.cw@gmail.com">이메일</a> 부탁드립니다</p>
+                <p>모든 문의는 <a href="mailto:pupzei.cw@gmail.com">이메일</a>로 부탁드립니다</p>
               </div>
 
             </div>
