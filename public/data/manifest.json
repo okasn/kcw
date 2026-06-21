@@ -1,8 +1,7 @@
 {
   "archive": {
     "title": "김채원 프롬 아카이브",
-    "period": "2024.05.11 ~ 2026.06.30",
-    "daysTogether": 780,
+    "daysTogether": 806,
     "nickname": "딸랑단"
   },
   "profile": {
@@ -110,6 +109,7 @@
     ]
   },
   "months": [
+    { "id": "2024-04", "label": "2024년 4월", "file": "/data/2024-04.json" },
     { "id": "2024-05", "label": "2024년 5월", "file": "/data/2024-05.json" },
     { "id": "2024-06", "label": "2024년 6월", "file": "/data/2024-06.json" },
     { "id": "2024-07", "label": "2024년 7월", "file": "/data/2024-07.json" },

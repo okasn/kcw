@@ -160,7 +160,7 @@ export default async function HomePage() {
               </div>
               
               <div className="homeNoticeLine">
-                <p>2024.05.11 ~ 2026.06.30 백업</p>
+                <p>2024.04.16 ~ 2026.06.30 백업</p>
               </div>
 
               <div className="homeNoticeLine">
