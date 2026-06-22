@@ -3,6 +3,7 @@ import ChatDateClient from '@/components/chat/ChatDateClient';
 import { getAllMessages, getDayGroups } from '@/lib/getArchiveData';
 import { getManifest } from '@/lib/getManifest';
 import ChatDateNotFound from '@/components/chat/ChatDateNotFound';
+export const runtime = 'edge';
 
 export default async function ChatDatePage({
   params,

@@ -8,6 +8,7 @@ import { getDayGroups } from '@/lib/getArchiveData';
 import { getKoreanNow } from '@/lib/format';
 import { preload } from 'react-dom';
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 function HeartIcon() {
   return (
