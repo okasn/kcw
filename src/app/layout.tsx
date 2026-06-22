@@ -7,6 +7,7 @@ import '@/styles/audio.css';
 import '@/styles/search.css';
 import '@/styles/media.css';
 import '@/styles/setting.css';
+import { Analytics } from "@vercel/analytics/next";
 
 
 export const metadata: Metadata = {
@@ -58,7 +59,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
