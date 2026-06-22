@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SiteNav from '@/components/layout/SiteNav';
 import HomeRecommendInfo from '@/components/home/HomeRecommendInfo';
+import ProfileImageViewer from '@/components/profile/ProfileImageViewer';
 import HomeQuickSettings from '@/components/home/HomeQuickSettings';
 import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
@@ -98,7 +99,11 @@ export default async function HomePage() {
 
             <div className="homeWelcome">
               <div className="homeMessage">
-                <img src={profile.defaultAvatar} alt="" />
+                <ProfileImageViewer
+                  src={profile.defaultAvatar}
+                  alt={profile.name}
+                  name={profile.name}
+                />
                 <div>
                   <span>{profile.name}</span>
                   <p>
@@ -108,7 +113,11 @@ export default async function HomePage() {
               </div>
 
               <div className="homeMessage">
-                <img src="/profile/251227.jpeg" alt="" />
+                <ProfileImageViewer
+                  src="/profile/251227.jpeg"
+                  alt={profile.name}
+                  name={profile.name}
+                />
                 <div>
                   <span>{profile.name}</span>
                   <p>마!! 왔나!!!! 환영한다 마!!!</p>

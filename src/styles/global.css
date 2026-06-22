@@ -1034,3 +1034,115 @@ a {
   padding: 36px 16px 20px;
 }
 }
+
+.profileImageTrigger {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  flex-shrink: 0;
+}
+
+.profileImageTrigger img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.profileImageOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  animation: profileOverlayIn 180ms ease-out;
+}
+
+.profileImageViewer {
+  position: relative;
+  width: min(320px, 82vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  animation: profileViewerIn 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profileImageLarge {
+  width: min(280px, 72vw);
+  height: min(280px, 72vw);
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--surface);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.profileImageClose {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.profileImageClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.profileImageDownload {
+  height: 38px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.profileImageDownload svg {
+  width: 15px;
+  height: 15px;
+}
+
+@keyframes profileOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes profileViewerIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -19,10 +19,12 @@ export default function MediaLightbox({
   items,
   initialIndex,
   onClose,
+  onBeforeNavigate,
 }: {
   items: LightboxItem[];
   initialIndex: number;
   onClose: () => void;
+  onBeforeNavigate?: () => void;
 }) {
   const [index, setIndex] = useState(initialIndex);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -135,7 +137,10 @@ export default function MediaLightbox({
               <Link
                 className="viewerIconBtn"
                 href={item.chatHref}
-                onClick={onClose}
+                onClick={() => {
+                  onBeforeNavigate?.();
+                  onClose();
+                }}
                 aria-label="채팅에서 보기"
               >
                 <ArrowUpRight size={18} strokeWidth={1.8} />

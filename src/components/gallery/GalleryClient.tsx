@@ -9,6 +9,9 @@ type MediaType = 'all' | 'image' | 'video';
 type SortMode = 'newest' | 'oldest';
 
 const PAGE_SIZE = 60;
+const VISIBLE_COUNT_KEY = 'galleryVisibleCount';
+const SCROLL_Y_KEY = 'galleryScrollY';
+const RESTORE_STATE_KEY = 'galleryRestoreState';
 
 export default function GalleryClient({ items }: { items: LightboxItem[] }) {
   const [filterOpen, setFilterOpen] = useState(false);
@@ -18,6 +21,8 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [showTop, setShowTop] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const savedScrollYRef = useRef<number | null>(null);
+  const savedVisibleCountRef = useRef<number | null>(null);
 
   const filteredItems = useMemo(() => {
     const result =
@@ -32,6 +37,58 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
   }, [items, selectedType, sort]);
 
   const visibleItems = filteredItems.slice(0, visibleCount);
+
+  useEffect(() => {
+    const shouldRestoreState = sessionStorage.getItem(RESTORE_STATE_KEY) === 'true';
+
+    if (shouldRestoreState) {
+      const savedVisibleCount = sessionStorage.getItem(VISIBLE_COUNT_KEY);
+      const savedScrollY = sessionStorage.getItem(SCROLL_Y_KEY);
+
+      if (savedVisibleCount) {
+        const nextVisibleCount = Number(savedVisibleCount);
+
+        if (Number.isFinite(nextVisibleCount) && nextVisibleCount > PAGE_SIZE) {
+          savedVisibleCountRef.current = nextVisibleCount;
+          setVisibleCount(nextVisibleCount);
+        }
+      }
+
+      if (savedScrollY) {
+        const nextScrollY = Number(savedScrollY);
+
+        if (Number.isFinite(nextScrollY) && nextScrollY > 0) {
+          savedScrollYRef.current = nextScrollY;
+        }
+      }
+    } else {
+      sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+      sessionStorage.removeItem(SCROLL_Y_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (savedScrollYRef.current === null) return;
+
+    const savedVisibleCount = savedVisibleCountRef.current;
+
+    if (savedVisibleCount && visibleItems.length < Math.min(savedVisibleCount, filteredItems.length)) {
+      return;
+    }
+
+    const scrollY = savedScrollYRef.current;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+        savedScrollYRef.current = null;
+        savedVisibleCountRef.current = null;
+        sessionStorage.removeItem(RESTORE_STATE_KEY);
+        sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+        sessionStorage.removeItem(SCROLL_Y_KEY);
+      });
+    });
+  }, [visibleItems.length, filteredItems.length]);
 
   useEffect(() => {
     function onScroll() {
@@ -76,10 +133,25 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
     setFilterOpen((value) => !value);
   }
 
+  function resetList() {
+    setVisibleCount(PAGE_SIZE);
+    savedScrollYRef.current = null;
+    savedVisibleCountRef.current = null;
+    sessionStorage.removeItem(RESTORE_STATE_KEY);
+    sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+    sessionStorage.removeItem(SCROLL_Y_KEY);
+  }
+
+  function rememberListState() {
+    sessionStorage.setItem(RESTORE_STATE_KEY, 'true');
+    sessionStorage.setItem(VISIBLE_COUNT_KEY, String(visibleCount));
+    sessionStorage.setItem(SCROLL_Y_KEY, String(window.scrollY));
+  }
+
   function changeType(type: MediaType) {
     setSelectedType(type);
     setSelectedIndex(null);
-    setVisibleCount(PAGE_SIZE);
+    resetList();
   }
 
   const hasFilter = selectedType !== 'all';
@@ -96,7 +168,7 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
             onClick={() => {
               setSort((value) => (value === 'newest' ? 'oldest' : 'newest'));
               setSelectedIndex(null);
-              setVisibleCount(PAGE_SIZE);
+              resetList();
             }}
           >
             {sort === 'newest' ? '최신순' : '오래된순'}
@@ -210,6 +282,7 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
           items={filteredItems}
           initialIndex={selectedIndex}
           onClose={() => setSelectedIndex(null)}
+          onBeforeNavigate={rememberListState}
         />
       )}
     </>

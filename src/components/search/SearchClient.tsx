@@ -16,6 +16,7 @@ type SearchMessage = {
 
 const RECENT_KEY = 'recentSearches';
 const ACTIVE_SCROLL_KEY = 'activeSearchScrollY';
+const ACTIVE_VISIBLE_COUNT_KEY = 'activeSearchVisibleCount';
 const RESTORE_SEARCH_KEY = 'restoreSearchOnReturn';
 const MAX_RECENT = 8;
 const PAGE_SIZE = 50;
@@ -69,7 +70,8 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
   const [showTop, setShowTop] = useState(false);
   const [restoreScrollY, setRestoreScrollY] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+const loadMoreRef = useRef<HTMLDivElement | null>(null);
+const restoreVisibleCountRef = useRef<number | null>(null);
 
   useEffect(() => {
     try {
@@ -90,9 +92,20 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
     }
 
     if (shouldRestore) {
+      const savedVisibleCount = Number(sessionStorage.getItem(ACTIVE_VISIBLE_COUNT_KEY) || 0);
       const savedScrollY = Number(sessionStorage.getItem(ACTIVE_SCROLL_KEY) || 0);
-      setRestoreScrollY(savedScrollY || null);
-      sessionStorage.removeItem(RESTORE_SEARCH_KEY);
+
+      if (Number.isFinite(savedVisibleCount) && savedVisibleCount > PAGE_SIZE) {
+        restoreVisibleCountRef.current = savedVisibleCount;
+        setVisibleCount(savedVisibleCount);
+      }
+
+      if (Number.isFinite(savedScrollY) && savedScrollY > 0) {
+        setRestoreScrollY(savedScrollY);
+      }
+    } else {
+      sessionStorage.removeItem(ACTIVE_SCROLL_KEY);
+      sessionStorage.removeItem(ACTIVE_VISIBLE_COUNT_KEY);
     }
   }, [searchParams]);
 
@@ -123,13 +136,27 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
   useEffect(() => {
     if (restoreScrollY === null) return;
 
+    const savedVisibleCount = restoreVisibleCountRef.current;
+
+    if (savedVisibleCount && visibleResults.length < Math.min(savedVisibleCount, results.length)) {
+      return;
+    }
+
     requestAnimationFrame(() => {
-      window.scrollTo(0, restoreScrollY);
-      setRestoreScrollY(null);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, restoreScrollY);
+        setRestoreScrollY(null);
+        restoreVisibleCountRef.current = null;
+        sessionStorage.removeItem(RESTORE_SEARCH_KEY);
+        sessionStorage.removeItem(ACTIVE_SCROLL_KEY);
+        sessionStorage.removeItem(ACTIVE_VISIBLE_COUNT_KEY);
+      });
     });
-  }, [restoreScrollY, results.length]);
+  }, [restoreScrollY, visibleResults.length, results.length]);
 
   useEffect(() => {
+    if (restoreVisibleCountRef.current !== null) return;
+
     setVisibleCount(PAGE_SIZE);
   }, [query]);
 
@@ -269,11 +296,12 @@ export default function SearchClient({ messages }: { messages: SearchMessage[] }
             href={withSearchParams(msg.chatHref, query)}
             className="searchResultItem"
             key={msg.id}
-            onClick={() => {
-              saveRecent(query);
-              sessionStorage.setItem(ACTIVE_SCROLL_KEY, String(window.scrollY));
-              sessionStorage.setItem(RESTORE_SEARCH_KEY, 'true');
-            }}
+          onClick={() => {
+            saveRecent(query);
+            sessionStorage.setItem(ACTIVE_SCROLL_KEY, String(window.scrollY));
+            sessionStorage.setItem(ACTIVE_VISIBLE_COUNT_KEY, String(visibleCount));
+            sessionStorage.setItem(RESTORE_SEARCH_KEY, 'true');
+          }}
           >
             <span>{formatDate(msg.createdAt)}</span>
 

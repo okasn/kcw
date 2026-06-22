@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUp, ArrowUpRight, Download, ListFilter } from 'lucide-react';
 import VoiceMessage from '@/components/chat/VoiceMessage';
@@ -16,7 +16,9 @@ type VoiceItem = {
 type SortMode = 'newest' | 'oldest';
 
 const PAGE_SIZE = 50;
-
+const VISIBLE_COUNT_KEY = 'voiceVisibleCount';
+const SCROLL_Y_KEY = 'voiceScrollY';
+const RESTORE_STATE_KEY = 'voiceRestoreState';
 
 function formatShortDate(iso: string) {
   const d = new Date(iso);
@@ -41,6 +43,7 @@ export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) 
   const [month, setMonth] = useState('all');
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [showTop, setShowTop] = useState(false);
+  const savedScrollYRef = useRef<number | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem('voiceFilters');
@@ -53,6 +56,32 @@ export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) 
         if (typeof parsed.year === 'string') setYear(parsed.year);
         if (typeof parsed.month === 'string') setMonth(parsed.month);
       } catch {}
+    }
+
+    const shouldRestoreState = sessionStorage.getItem(RESTORE_STATE_KEY) === 'true';
+
+    if (shouldRestoreState) {
+      const savedVisibleCount = sessionStorage.getItem(VISIBLE_COUNT_KEY);
+      const savedScrollY = sessionStorage.getItem(SCROLL_Y_KEY);
+
+      if (savedVisibleCount) {
+        const nextVisibleCount = Number(savedVisibleCount);
+
+        if (Number.isFinite(nextVisibleCount) && nextVisibleCount > PAGE_SIZE) {
+          setVisibleCount(nextVisibleCount);
+        }
+      }
+
+      if (savedScrollY) {
+        const nextScrollY = Number(savedScrollY);
+
+        if (Number.isFinite(nextScrollY) && nextScrollY > 0) {
+          savedScrollYRef.current = nextScrollY;
+        }
+      }
+    } else {
+      sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+      sessionStorage.removeItem(SCROLL_Y_KEY);
     }
 
     setHydrated(true);
@@ -112,12 +141,36 @@ export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) 
 
   const visibleVoices = filteredVoices.slice(0, visibleCount);
 
+  useEffect(() => {
+    if (!hydrated || savedScrollYRef.current === null) return;
+
+    const scrollY = savedScrollYRef.current;
+
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+      savedScrollYRef.current = null;
+      sessionStorage.removeItem(RESTORE_STATE_KEY);
+      sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+      sessionStorage.removeItem(SCROLL_Y_KEY);
+    });
+  }, [hydrated, visibleVoices.length]);
+
   function toggleFilter() {
     setFilterOpen((value) => !value);
   }
 
   function resetList() {
     setVisibleCount(PAGE_SIZE);
+    savedScrollYRef.current = null;
+    sessionStorage.removeItem(RESTORE_STATE_KEY);
+    sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+    sessionStorage.removeItem(SCROLL_Y_KEY);
+  }
+
+  function rememberListState() {
+    sessionStorage.setItem(RESTORE_STATE_KEY, 'true');
+    sessionStorage.setItem(VISIBLE_COUNT_KEY, String(visibleCount));
+    sessionStorage.setItem(SCROLL_Y_KEY, String(window.scrollY));
   }
 
   function clearFilter() {
@@ -229,7 +282,12 @@ export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) 
               <span>{formatShortDate(voice.createdAt)}</span>
 
               <div className="voiceMiniActions">
-                <Link href={voice.chatHref} className="voiceActionLink" aria-label="채팅에서 보기">
+                <Link
+                  href={voice.chatHref}
+                  className="voiceActionLink"
+                  aria-label="채팅에서 보기"
+                  onClick={rememberListState}
+                >
                   <ArrowUpRight size={12} strokeWidth={1.8} />
                 </Link>
 

@@ -7,6 +7,7 @@ import { getKind, getReplyPreview } from '@/lib/message';
 import { getProfileByDate } from '@/lib/profile';
 import type { ChatMessage, Manifest } from '@/lib/types';
 import type { LightboxItem } from '@/components/media/MediaLightbox';
+import ProfileImageViewer from '@/components/profile/ProfileImageViewer';
 import TextMessage from './TextMessage';
 import MediaMessage from './MediaMessage';
 import VoiceMessage from './VoiceMessage';
@@ -52,14 +53,10 @@ export default function MessageItem({
       id={`msg-${msg.id}`}
     >
       <div className="avatar">
-        <img
+        <ProfileImageViewer
           src={currentProfile.avatar}
-          alt=""
-          width={38}
-          height={38}
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
+          alt={currentProfile.artistNickname}
+          name={currentProfile.artistNickname}
         />
       </div>
 

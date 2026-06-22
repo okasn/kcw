@@ -8,6 +8,9 @@ import type { DayGroup } from '@/lib/getArchiveData';
 type SortMode = 'newest' | 'oldest';
 
 const STORAGE_KEY = 'chatDayFilters';
+const VISIBLE_COUNT_KEY = 'chatDayVisibleCount';
+const SCROLL_Y_KEY = 'chatDayScrollY';
+const RESTORE_STATE_KEY = 'chatDayRestoreState';
 const PAGE_SIZE = 36;
 
 
@@ -20,6 +23,7 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [showTop, setShowTop] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const savedScrollYRef = useRef<number | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -34,6 +38,32 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
         if (typeof parsed.selectedMonth === 'string') setSelectedMonth(parsed.selectedMonth);
         if (parsed.sort === 'newest' || parsed.sort === 'oldest') setSort(parsed.sort);
       } catch {}
+    }
+
+    const shouldRestoreState = sessionStorage.getItem(RESTORE_STATE_KEY) === 'true';
+
+    if (shouldRestoreState) {
+      const savedVisibleCount = sessionStorage.getItem(VISIBLE_COUNT_KEY);
+      const savedScrollY = sessionStorage.getItem(SCROLL_Y_KEY);
+
+      if (savedVisibleCount) {
+        const nextVisibleCount = Number(savedVisibleCount);
+
+        if (Number.isFinite(nextVisibleCount) && nextVisibleCount > PAGE_SIZE) {
+          setVisibleCount(nextVisibleCount);
+        }
+      }
+
+      if (savedScrollY) {
+        const nextScrollY = Number(savedScrollY);
+
+        if (Number.isFinite(nextScrollY) && nextScrollY > 0) {
+          savedScrollYRef.current = nextScrollY;
+        }
+      }
+    } else {
+      sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+      sessionStorage.removeItem(SCROLL_Y_KEY);
     }
 
     setHydrated(true);
@@ -119,12 +149,36 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
     return () => observer.disconnect();
   }, [visibleCount, filteredDays.length]);
 
+  useEffect(() => {
+    if (!hydrated || savedScrollYRef.current === null) return;
+
+    const scrollY = savedScrollYRef.current;
+
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollY);
+      savedScrollYRef.current = null;
+      sessionStorage.removeItem(RESTORE_STATE_KEY);
+      sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+      sessionStorage.removeItem(SCROLL_Y_KEY);
+    });
+  }, [hydrated, visibleDays.length]);
+
   function toggleFilter() {
     setFilterOpen((value) => !value);
   }
 
   function resetList() {
     setVisibleCount(PAGE_SIZE);
+    savedScrollYRef.current = null;
+    sessionStorage.removeItem(RESTORE_STATE_KEY);
+    sessionStorage.removeItem(VISIBLE_COUNT_KEY);
+    sessionStorage.removeItem(SCROLL_Y_KEY);
+  }
+
+  function rememberListState() {
+    sessionStorage.setItem(RESTORE_STATE_KEY, 'true');
+    sessionStorage.setItem(VISIBLE_COUNT_KEY, String(visibleCount));
+    sessionStorage.setItem(SCROLL_Y_KEY, String(window.scrollY));
   }
 
   function changeYear(year: string) {
@@ -237,7 +291,12 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
 
       <div className="dayGrid">
         {visibleDays.map((day) => (
-          <Link className="dayCard card" href={`/chat/${day.date}`} key={day.date}>
+          <Link
+            className="dayCard card"
+            href={`/chat/${day.date}`}
+            key={day.date}
+            onClick={rememberListState}
+          >
             <div className="dayThumb">
               {day.thumbnail ? (
                 <img src={day.thumbnail} alt="" />

@@ -27,6 +27,12 @@
   }
 }
 
+.homeMessage .profileImageTrigger {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
 .homeMessage img {
   width: 38px;
   height: 38px;
