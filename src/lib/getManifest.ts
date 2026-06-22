@@ -1,15 +1,11 @@
-import fs from 'fs/promises';
-import path from 'path';
-
 export async function getManifest() {
-  const filePath = path.join(
-    process.cwd(),
-    'public',
-    'data',
-    'manifest.json'
-  );
+  const response = await fetch('/data/manifest.json', {
+    cache: 'force-cache',
+  });
 
-  const file = await fs.readFile(filePath, 'utf8');
+  if (!response.ok) {
+    throw new Error('Failed to load manifest.json');
+  }
 
-  return JSON.parse(file);
+  return response.json();
 }
