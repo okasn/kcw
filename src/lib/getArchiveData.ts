@@ -1,3 +1,5 @@
+import fs from 'fs/promises';
+import path from 'path';
 import { cache } from 'react';
 import { getManifest } from './getManifest';
 import { getKind, getThumbnailUrl, normalizeMessages } from './message';
@@ -21,16 +23,11 @@ export const getAllMessages = cache(async (): Promise<ChatMessage[]> => {
 
   await Promise.all(
     manifest.months.map(async (month: MonthItem) => {
+      const filePath = path.join(process.cwd(), 'public', month.file);
+
       try {
-        const response = await fetch(month.file, {
-          cache: 'force-cache',
-        });
-
-        if (!response.ok) {
-          return;
-        }
-
-        const parsed = await response.json();
+        const raw = await fs.readFile(filePath, 'utf8');
+        const parsed = JSON.parse(raw);
         all.push(...normalizeMessages(parsed));
       } catch {
         // 파일이 없거나 JSON 파싱 실패하면 무시

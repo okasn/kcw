@@ -4,16 +4,6 @@ import { getAllMessages, getDayGroups } from '@/lib/getArchiveData';
 import { getManifest } from '@/lib/getManifest';
 import ChatDateNotFound from '@/components/chat/ChatDateNotFound';
 
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const days = await getDayGroups();
-
-  return days.map((day) => ({
-    date: day.date,
-  }));
-}
-
 export default async function ChatDatePage({
   params,
 }: {
