@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@pupzei",
-    title: "김채원 프롬",
-    description: "💖💚",
+    title: "💖💚",
+    description: "트리플에스 김채원 프롬 아카이브",
     images: ["/og.jpg"],
   },
 
