@@ -1,14 +1,3 @@
-import type { Metadata } from 'next';
-import '@/styles/global.css';
-import '@/styles/home.css';
-import '@/styles/chat.css';
-import '@/styles/gallery.css';
-import '@/styles/audio.css';
-import '@/styles/search.css';
-import '@/styles/media.css';
-import '@/styles/setting.css';
-import { Analytics } from "@vercel/analytics/next";
-
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.kcws21.kr"),
