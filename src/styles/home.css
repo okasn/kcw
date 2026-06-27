@@ -313,7 +313,7 @@
   opacity: 0.75;
 }
 
-.homeContactMenu[open] .homeContactTrigger {
+.homeContactMenu.isOpen .homeContactTrigger {
   color: var(--text);
 }
 
