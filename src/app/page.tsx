@@ -3,6 +3,7 @@ import SiteNav from '@/components/layout/SiteNav';
 import HomeRecommendInfo from '@/components/home/HomeRecommendInfo';
 import ProfileImageViewer from '@/components/profile/ProfileImageViewer';
 import HomeQuickSettings from '@/components/home/HomeQuickSettings';
+import HomeContactMenu from '@/components/home/HomeContactMenu';
 import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
 import { getKoreanNow } from '@/lib/format';
@@ -186,8 +187,12 @@ export default async function HomePage() {
                 <p>메시지 내용으로 검색할 수 있어요</p>
               </div>
 
-              <div className="homeNoticeLine">
-                <p>모든 문의는 <a href="mailto:pupzei.cw@gmail.com">이메일</a>로 부탁드립니다</p>
+              <div className="homeNoticeLine homeContactLine">
+                <div className="homeContactText">
+  <span>모든 문의는</span>
+  <HomeContactMenu />
+  <span>로 부탁드립니다</span>
+</div>
               </div>
 
             </div>
