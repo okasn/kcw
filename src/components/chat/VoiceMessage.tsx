@@ -13,34 +13,89 @@ function toSeconds(value: number | string | null | undefined) {
 
 export default function VoiceMessage({ msg }: { msg: ChatMessage }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const initial = toSeconds(msg.runningTime);
+  const shouldAutoPlayRef = useRef(false);
 
+  const initial = toSeconds(msg.runningTime);
+  const primaryUrl = getMediaUrl(msg);
+  const fallbackUrl =
+    typeof msg.contentOriginalUrl === 'string'
+      ? msg.contentOriginalUrl
+      : null;
+
+  const [currentUrl, setCurrentUrl] = useState(primaryUrl);
   const [duration, setDuration] = useState(initial);
   const [remaining, setRemaining] = useState(initial);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const url = getMediaUrl(msg);
+  const [fallbackTried, setFallbackTried] = useState(false);
 
   useEffect(() => {
-  function stopOtherVoice(event: Event) {
-    const custom = event as CustomEvent<string>;
+    setCurrentUrl(primaryUrl);
+    setFallbackTried(false);
+    setPlaying(false);
+    setLoading(false);
+    setDuration(initial);
+    setRemaining(initial);
+    shouldAutoPlayRef.current = false;
+  }, [primaryUrl, initial]);
 
-    if (custom.detail === msg.id) return;
+  useEffect(() => {
+    if (!shouldAutoPlayRef.current) return;
+    if (!currentUrl) return;
 
-    audioRef.current?.pause();
+    shouldAutoPlayRef.current = false;
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.load();
+
+    requestAnimationFrame(() => {
+      audio.play().catch((error) => {
+        setPlaying(false);
+        setLoading(false);
+
+        const err = error as DOMException;
+        if (err.name !== 'AbortError') {
+          console.error('audio fallback play failed', error);
+        }
+      });
+    });
+  }, [currentUrl]);
+
+  useEffect(() => {
+    function stopOtherVoice(event: Event) {
+      const custom = event as CustomEvent<string>;
+
+      if (custom.detail === msg.id) return;
+
+      audioRef.current?.pause();
+    }
+
+    window.addEventListener('voice-play', stopOtherVoice);
+
+    return () => {
+      window.removeEventListener('voice-play', stopOtherVoice);
+    };
+  }, [msg.id]);
+
+  function switchToFallback() {
+    if (!fallbackUrl || currentUrl === fallbackUrl || fallbackTried) {
+      setPlaying(false);
+      setLoading(false);
+      return false;
+    }
+
+    setFallbackTried(true);
+    setCurrentUrl(fallbackUrl);
+    shouldAutoPlayRef.current = true;
+
+    return true;
   }
-
-  window.addEventListener('voice-play', stopOtherVoice);
-
-  return () => {
-    window.removeEventListener('voice-play', stopOtherVoice);
-  };
-}, [msg.id]);
 
   async function toggle() {
     const audio = audioRef.current;
-    if (!audio || !url) return;
+    if (!audio || !currentUrl) return;
 
     if (!audio.paused) {
       audio.pause();
@@ -49,16 +104,23 @@ export default function VoiceMessage({ msg }: { msg: ChatMessage }) {
     }
 
     setPlaying(true);
-setLoading(true);
+    setLoading(true);
 
-window.dispatchEvent(new CustomEvent('voice-play', { detail: msg.id }));
+    window.dispatchEvent(new CustomEvent('voice-play', { detail: msg.id }));
 
-try {
-  await audio.play();
+    try {
+      await audio.play();
     } catch (error) {
-      setPlaying(false);
-      const err = error as DOMException;
-      if (err.name !== 'AbortError') console.error('audio play failed', error);
+      const switched = switchToFallback();
+
+      if (!switched) {
+        setPlaying(false);
+
+        const err = error as DOMException;
+        if (err.name !== 'AbortError') {
+          console.error('audio play failed', error);
+        }
+      }
     } finally {
       setLoading(false);
     }
@@ -92,6 +154,10 @@ try {
     setRemaining(duration);
   }
 
+  function handleError() {
+    switchToFallback();
+  }
+
   return (
     <div className={`voiceBubble ${playing ? 'isPlaying' : ''} ${loading ? 'isLoading' : ''}`}>
       <button
@@ -109,17 +175,19 @@ try {
 
       <span className="voiceDuration">{formatDuration(remaining)}</span>
 
-      {url && (
+      {currentUrl && (
         <audio
-  ref={audioRef}
-  src={url}
-  preload="none"
-  onLoadedMetadata={handleLoadedMetadata}
-  onTimeUpdate={handleTimeUpdate}
-  onPlay={() => setPlaying(true)}
-  onPause={() => setPlaying(false)}
-  onEnded={handleEnded}
-/>
+          key={currentUrl}
+          ref={audioRef}
+          src={currentUrl}
+          preload="none"
+          onLoadedMetadata={handleLoadedMetadata}
+          onTimeUpdate={handleTimeUpdate}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={handleEnded}
+          onError={handleError}
+        />
       )}
     </div>
   );

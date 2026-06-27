@@ -2211,9 +2211,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/751941707099119_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/751941707099119_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/751941707099119_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/751941707099119_0x0.m4a",
     "code": "3894FEF1-7263-421C-9B58-43FC4F2EBCB7",
     "runningTime": 3,
     "emoticonItem": null,
@@ -2230,7 +2230,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/751941707099119_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/751941707099119_0x0.m4a"
   },
   {
     "id": "cd5a4c9c-3a47-4d2e-add3-1b6db8d755f2",
@@ -4038,9 +4040,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "image",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8815804533030798_1537x2048.png",
+    "content": "https://cdn.kcws21.kr/images/2025/05/8815804533030798_1537x2048.png",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8476335723486901_384x512.png",
+    "thumbnail": "https://cdn.kcws21.kr/image_thumbnails/2025/05/8476335723486901_384x512.png",
     "code": "8D72AFB4-960A-4B17-97B0-567BC7E13123",
     "runningTime": null,
     "emoticonItem": null,
@@ -4057,7 +4059,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8815804533030798_1537x2048.png",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8476335723486901_384x512.png"
   },
   {
     "id": "c2df6bb1-fb49-440d-a7d3-c438f16aff19",
@@ -6329,9 +6333,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6698378317287579_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/6698378317287579_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6698378317287579_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/6698378317287579_0x0.m4a",
     "code": "47191F83-9295-40B9-B7FE-C1C11AF6B88C",
     "runningTime": 4,
     "emoticonItem": null,
@@ -6348,7 +6352,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6698378317287579_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6698378317287579_0x0.m4a"
   },
   {
     "id": "0c379a61-8e0e-4f58-8e2b-c2030dbf3c46",
@@ -6387,9 +6393,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9850636025798216_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9850636025798216_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9850636025798216_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9850636025798216_0x0.m4a",
     "code": "8AA9CC51-5459-4C65-A9F5-C7F28E47C4B3",
     "runningTime": 5,
     "emoticonItem": null,
@@ -6406,7 +6412,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9850636025798216_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9850636025798216_0x0.m4a"
   },
   {
     "id": "089340b7-059e-40ee-929a-eb630cc28f9d",
@@ -6590,9 +6598,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/24310797762904568_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/24310797762904568_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/24310797762904568_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/24310797762904568_0x0.m4a",
     "code": "9B248215-5358-4ADD-A1E2-5028A70428AD",
     "runningTime": 1,
     "emoticonItem": null,
@@ -6609,7 +6617,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/24310797762904568_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/24310797762904568_0x0.m4a"
   },
   {
     "id": "3796af53-14e5-4be9-81ec-b428f72d1f63",
@@ -8214,9 +8224,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/23101580096083185_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/23101580096083185_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/23101580096083185_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/23101580096083185_0x0.m4a",
     "code": "246B9100-BFBC-479A-BEC2-FEC9409EDF90",
     "runningTime": 1,
     "emoticonItem": null,
@@ -8233,7 +8243,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/23101580096083185_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/23101580096083185_0x0.m4a"
   },
   {
     "id": "c7162522-86b0-414d-9224-2a13c5769f11",
@@ -8359,9 +8371,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/1326823199370617_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/1326823199370617_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/1326823199370617_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/1326823199370617_0x0.m4a",
     "code": "F027E6CB-A47C-4915-86B0-032987CBF77C",
     "runningTime": 2,
     "emoticonItem": null,
@@ -8378,7 +8390,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/1326823199370617_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/1326823199370617_0x0.m4a"
   },
   {
     "id": "28c4c835-bad4-4b35-902b-e5db8d1e39f0",
@@ -9229,9 +9243,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/05366814689512478_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/05366814689512478_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/05366814689512478_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/05366814689512478_0x0.m4a",
     "code": "1E21E625-3652-47B9-B278-419C04E0240F",
     "runningTime": 2,
     "emoticonItem": null,
@@ -9248,7 +9262,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/05366814689512478_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/05366814689512478_0x0.m4a"
   },
   {
     "id": "103e1aca-5c84-4075-bf37-f46a61e706e6",
@@ -13753,9 +13769,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8733665597349101_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/8733665597349101_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8733665597349101_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/8733665597349101_0x0.m4a",
     "code": "81A1D1FF-3373-4D5E-BCD1-8632480413A5",
     "runningTime": 1,
     "emoticonItem": null,
@@ -13772,7 +13788,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8733665597349101_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8733665597349101_0x0.m4a"
   },
   {
     "id": "c3a498f8-dddc-4d08-8ffe-2322001fd747",
@@ -14710,9 +14728,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6157212937193641_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/6157212937193641_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6157212937193641_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/6157212937193641_0x0.m4a",
     "code": "5F535E9B-63A8-4E48-A311-51A78E4EAD45",
     "runningTime": 3,
     "emoticonItem": null,
@@ -14729,7 +14747,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6157212937193641_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6157212937193641_0x0.m4a"
   },
   {
     "id": "c0238cbd-81b4-4e47-a8cf-d894aa130da4",
@@ -14768,9 +14788,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/29967460557518755_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/29967460557518755_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/29967460557518755_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/29967460557518755_0x0.m4a",
     "code": "159F1120-21FA-49A4-B033-9720ADF54D71",
     "runningTime": 5,
     "emoticonItem": null,
@@ -14787,7 +14807,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/29967460557518755_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/29967460557518755_0x0.m4a"
   },
   {
     "id": "5463c203-b913-4ab3-85fb-3a9046f664dd",
@@ -15609,9 +15631,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "image",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/2388561779892877_1376x2048.png",
+    "content": "https://cdn.kcws21.kr/images/2025/05/2388561779892877_1376x2048.png",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/858653285827012_344x512.png",
+    "thumbnail": "https://cdn.kcws21.kr/image_thumbnails/2025/05/858653285827012_344x512.png",
     "code": "E73603A6-3E22-4973-B33B-6B69A5B582A1",
     "runningTime": null,
     "emoticonItem": null,
@@ -15628,7 +15650,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/2388561779892877_1376x2048.png",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/858653285827012_344x512.png"
   },
   {
     "id": "ded4f1ca-de8b-46b3-affd-e675291c9453",
@@ -25005,9 +25029,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "image",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/4921732655738158_1376x2048.png",
+    "content": "https://cdn.kcws21.kr/images/2025/05/4921732655738158_1376x2048.png",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/00047945647491198784_344x512.png",
+    "thumbnail": "https://cdn.kcws21.kr/image_thumbnails/2025/05/00047945647491198784_344x512.png",
     "code": "773AA75D-090C-4AB6-A9C0-742CAD1B3DFC",
     "runningTime": null,
     "emoticonItem": null,
@@ -25024,7 +25048,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/4921732655738158_1376x2048.png",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/00047945647491198784_344x512.png"
   },
   {
     "id": "ff275f5a-6e9f-4e64-a7ab-dcca47e1ceae",
@@ -37272,9 +37298,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/13174609841055052_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/13174609841055052_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/13174609841055052_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/13174609841055052_0x0.m4a",
     "code": "014BB553-B1F6-4394-BDD8-F27DFBF622D4",
     "runningTime": 2,
     "emoticonItem": null,
@@ -37291,7 +37317,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/13174609841055052_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/13174609841055052_0x0.m4a"
   },
   {
     "id": "17e7f251-ac7d-4d67-a0c6-22214e573cec",
@@ -38606,9 +38634,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/3271972553157996_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/3271972553157996_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/3271972553157996_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/3271972553157996_0x0.m4a",
     "code": "73F2A185-B123-4B09-B2E8-3E9F93259433",
     "runningTime": 2,
     "emoticonItem": null,
@@ -38625,7 +38653,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/3271972553157996_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/3271972553157996_0x0.m4a"
   },
   {
     "id": "d8951762-fc95-4a9d-bbe3-68f0db7dbca7",
@@ -39795,9 +39825,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8555434145618697_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/8555434145618697_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8555434145618697_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/8555434145618697_0x0.m4a",
     "code": "E7ED2ACF-7195-47B9-9317-0C8A486006E1",
     "runningTime": 1,
     "emoticonItem": null,
@@ -39814,7 +39844,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8555434145618697_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8555434145618697_0x0.m4a"
   },
   {
     "id": "15c74f8b-aab1-447b-b12f-0bea27aba8c2",
@@ -41274,9 +41306,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6454610382107879_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/6454610382107879_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6454610382107879_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/6454610382107879_0x0.m4a",
     "code": "A4B973E6-C77F-42A4-ABAF-4870B434D815",
     "runningTime": 7,
     "emoticonItem": null,
@@ -41293,7 +41325,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6454610382107879_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6454610382107879_0x0.m4a"
   },
   {
     "id": "d141f9e6-ed55-49b4-a778-4be2fcc63011",
@@ -41477,9 +41511,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9468919938761604_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9468919938761604_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9468919938761604_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9468919938761604_0x0.m4a",
     "code": "00C14336-7B70-43BB-B470-2B55B5EEFA22",
     "runningTime": 1,
     "emoticonItem": null,
@@ -41496,7 +41530,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9468919938761604_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9468919938761604_0x0.m4a"
   },
   {
     "id": "2c88fbe7-d45a-44e6-ad25-88948a6c6dc0",
@@ -42579,9 +42615,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/15475791564046903_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/15475791564046903_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/15475791564046903_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/15475791564046903_0x0.m4a",
     "code": "31868607-1D73-412E-8EF0-B27D8BE102C9",
     "runningTime": 1,
     "emoticonItem": null,
@@ -42598,7 +42634,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/15475791564046903_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/15475791564046903_0x0.m4a"
   },
   {
     "id": "1054d3c9-7b3e-4308-927e-b99fd850ebec",
@@ -42695,9 +42733,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/2252945347740387_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/2252945347740387_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/2252945347740387_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/2252945347740387_0x0.m4a",
     "code": "D0AFFEB0-D42D-465C-8044-10058E9D2E01",
     "runningTime": 2,
     "emoticonItem": null,
@@ -42714,7 +42752,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/2252945347740387_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/2252945347740387_0x0.m4a"
   },
   {
     "id": "36646d2e-e09d-45c1-a6b9-d33c45ec1cb8",
@@ -42782,9 +42822,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9107467277038652_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9107467277038652_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9107467277038652_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9107467277038652_0x0.m4a",
     "code": "21DA4D5A-8CE6-4282-9204-BA97085FE652",
     "runningTime": 2,
     "emoticonItem": null,
@@ -42801,7 +42841,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9107467277038652_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9107467277038652_0x0.m4a"
   },
   {
     "id": "a33bcc47-c42b-4ad3-9d8e-d27f9a11bcbd",
@@ -43971,9 +44013,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9294749536900704_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9294749536900704_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9294749536900704_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9294749536900704_0x0.m4a",
     "code": "06F1085F-C216-47D2-8D96-C349A9CC6B5B",
     "runningTime": 1,
     "emoticonItem": null,
@@ -43990,7 +44032,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9294749536900704_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9294749536900704_0x0.m4a"
   },
   {
     "id": "5821b464-fda6-472e-bc4a-5be952cb13a5",
@@ -45044,9 +45088,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7908852627536063_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/7908852627536063_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7908852627536063_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/7908852627536063_0x0.m4a",
     "code": "3EC3F6F1-777E-45FC-948C-F8384C5C479D",
     "runningTime": 10,
     "emoticonItem": null,
@@ -45063,7 +45107,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7908852627536063_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7908852627536063_0x0.m4a"
   },
   {
     "id": "c8369033-4d33-40b7-9c9b-5a364416741a",
@@ -45508,9 +45554,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6788507427014314_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/6788507427014314_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6788507427014314_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/6788507427014314_0x0.m4a",
     "code": "87AE40D3-CBB2-46EA-ABFC-A0AD5368DA2C",
     "runningTime": 2,
     "emoticonItem": null,
@@ -45527,7 +45573,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6788507427014314_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6788507427014314_0x0.m4a"
   },
   {
     "id": "748393fa-0a3b-4201-a31b-67d1573ab6af",
@@ -46378,9 +46426,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/40312981194174236_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/40312981194174236_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/40312981194174236_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/40312981194174236_0x0.m4a",
     "code": "E806DFA9-E03D-4414-8059-29042C4A3310",
     "runningTime": 6,
     "emoticonItem": null,
@@ -46397,7 +46445,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/40312981194174236_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/40312981194174236_0x0.m4a"
   },
   {
     "id": "11e6952e-8730-43f3-b5fc-7e8afd0c690b",
@@ -46407,9 +46457,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5429768246175579_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/5429768246175579_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5429768246175579_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/5429768246175579_0x0.m4a",
     "code": "26E36FD1-1850-43B2-A836-3F6BCA61144E",
     "runningTime": 4,
     "emoticonItem": null,
@@ -46426,7 +46476,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5429768246175579_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5429768246175579_0x0.m4a"
   },
   {
     "id": "34408e4b-ce9c-48f5-b796-76aed756ad68",
@@ -46784,9 +46836,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9265231236021492_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9265231236021492_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9265231236021492_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9265231236021492_0x0.m4a",
     "code": "55F0A8CA-F4AC-41A7-A3AE-A41A62148B2D",
     "runningTime": 10,
     "emoticonItem": null,
@@ -46803,7 +46855,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9265231236021492_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9265231236021492_0x0.m4a"
   },
   {
     "id": "99e9ae7f-5318-425d-9276-50d316700c6d",
@@ -47161,9 +47215,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5833472530231074_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/5833472530231074_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5833472530231074_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/5833472530231074_0x0.m4a",
     "code": "1CE8C589-F338-48FD-827C-57D47012E681",
     "runningTime": 5,
     "emoticonItem": null,
@@ -47180,7 +47234,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5833472530231074_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5833472530231074_0x0.m4a"
   },
   {
     "id": "546b3aab-4be0-4495-b212-305673138e06",
@@ -48350,9 +48406,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9163281027202235_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9163281027202235_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9163281027202235_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9163281027202235_0x0.m4a",
     "code": "AE2DD6A8-B133-4AAB-BF65-9006174AAC01",
     "runningTime": 2,
     "emoticonItem": null,
@@ -48369,7 +48425,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9163281027202235_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9163281027202235_0x0.m4a"
   },
   {
     "id": "134cbcc6-fb0e-4df6-8423-80218da1c7b1",
@@ -49481,9 +49539,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/18160548714492641_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/18160548714492641_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/18160548714492641_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/18160548714492641_0x0.m4a",
     "code": "7D585F51-7BD3-4CB5-8E06-8EB71F7C4D8A",
     "runningTime": 4,
     "emoticonItem": null,
@@ -49500,7 +49558,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/18160548714492641_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/18160548714492641_0x0.m4a"
   },
   {
     "id": "5c93344a-a59f-4deb-af60-245eef7363de",
@@ -49510,9 +49570,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8678320282548899_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/8678320282548899_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8678320282548899_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/8678320282548899_0x0.m4a",
     "code": "56FAB9CB-A9CE-4F53-B726-0E0C4F353185",
     "runningTime": 2,
     "emoticonItem": null,
@@ -49529,7 +49589,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8678320282548899_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8678320282548899_0x0.m4a"
   },
   {
     "id": "ba7b9810-e4ea-4f94-9376-4bc9fb5308da",
@@ -49858,9 +49920,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8866437507381919_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/8866437507381919_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8866437507381919_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/8866437507381919_0x0.m4a",
     "code": "C61854CD-4F01-4E23-9A8E-74AD3ABBD7F1",
     "runningTime": 1,
     "emoticonItem": null,
@@ -49877,7 +49939,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8866437507381919_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8866437507381919_0x0.m4a"
   },
   {
     "id": "b9d11c2e-d24c-4105-bf93-d0c6651815c7",
@@ -50583,9 +50647,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/4120742381092417_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/4120742381092417_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/4120742381092417_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/4120742381092417_0x0.m4a",
     "code": "32E7489C-98D0-4718-BEED-771C0F326174",
     "runningTime": 6,
     "emoticonItem": null,
@@ -50602,7 +50666,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/4120742381092417_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/4120742381092417_0x0.m4a"
   },
   {
     "id": "23cab95c-65a1-40e6-a429-04b39dd78e14",
@@ -52236,9 +52302,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5850599715353177_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/5850599715353177_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5850599715353177_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/5850599715353177_0x0.m4a",
     "code": "3934EB1E-4D7A-4C99-A87B-80454E6514DC",
     "runningTime": 2,
     "emoticonItem": null,
@@ -52255,7 +52321,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5850599715353177_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5850599715353177_0x0.m4a"
   },
   {
     "id": "8c0f94ff-2e59-4028-8160-53796bf7950e",
@@ -52265,9 +52333,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6663966834219968_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/6663966834219968_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6663966834219968_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/6663966834219968_0x0.m4a",
     "code": "ECBB283A-7CAF-4C7C-AFCE-D111BF5EBCBC",
     "runningTime": 3,
     "emoticonItem": null,
@@ -52284,7 +52352,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6663966834219968_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/6663966834219968_0x0.m4a"
   },
   {
     "id": "f072d47c-15cb-45f9-bfb0-31b89565144c",
@@ -54643,9 +54713,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8952850783514572_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/8952850783514572_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8952850783514572_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/8952850783514572_0x0.m4a",
     "code": "7057DB1F-CFEB-4A87-B7EA-9569BFB0F786",
     "runningTime": 1,
     "emoticonItem": null,
@@ -54662,7 +54732,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8952850783514572_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8952850783514572_0x0.m4a"
   },
   {
     "id": "7092dbd2-af53-422d-b27a-578ef152a7f5",
@@ -56934,9 +57006,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7254860418499514_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/7254860418499514_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7254860418499514_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/7254860418499514_0x0.m4a",
     "code": "8CBB775A-75C6-4DF7-9079-4B19AF55DAB5",
     "runningTime": 1,
     "emoticonItem": null,
@@ -56953,7 +57025,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7254860418499514_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/7254860418499514_0x0.m4a"
   },
   {
     "id": "b8e5f84e-2dde-4fc0-bd32-cc25b6415332",
@@ -58761,9 +58835,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "image",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5433631624634441_2048x1829.png",
+    "content": "https://cdn.kcws21.kr/images/2025/05/5433631624634441_2048x1829.png",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/13313536469653053_512x457.png",
+    "thumbnail": "https://cdn.kcws21.kr/image_thumbnails/2025/05/13313536469653053_512x457.png",
     "code": "26B2DDC1-A245-4BDA-8EED-81C94CF5352F",
     "runningTime": null,
     "emoticonItem": null,
@@ -58780,7 +58854,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/5433631624634441_2048x1829.png",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/13313536469653053_512x457.png"
   },
   {
     "id": "ac96ba2a-9fe5-414d-a2de-e020e5651fef",
@@ -61632,9 +61708,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8663242764922761_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/8663242764922761_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8663242764922761_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/8663242764922761_0x0.m4a",
     "code": "D94F4C1F-6509-4B86-90BA-115685F5D60B",
     "runningTime": 1,
     "emoticonItem": null,
@@ -61651,7 +61727,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8663242764922761_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/8663242764922761_0x0.m4a"
   },
   {
     "id": "f032becf-8803-40bf-a9d0-32f3f19905ea",
@@ -64677,9 +64755,9 @@
     "userID": "4b2c5a8a-1d39-46d4-b16f-11848082300c",
     "userType": "star",
     "type": "sound",
-    "content": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9122058639146409_0x0.m4a",
+    "content": "https://cdn.kcws21.kr/voices/2025/05/9122058639146409_0x0.m4a",
     "translatedMessage": null,
-    "thumbnail": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9122058639146409_0x0.m4a",
+    "thumbnail": "https://cdn.kcws21.kr/voices/2025/05/9122058639146409_0x0.m4a",
     "code": "D0DF653E-6A64-43F9-B56C-9088960C351C",
     "runningTime": 2,
     "emoticonItem": null,
@@ -64696,7 +64774,9 @@
     "isHidden": false,
     "deleted": false,
     "version": 1,
-    "supportVersionWhenSaved": 2
+    "supportVersionWhenSaved": 2,
+    "contentOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9122058639146409_0x0.m4a",
+    "thumbnailOriginalUrl": "https://contents.frommyarti.com/star/4b2c5a8a-1d39-46d4-b16f-11848082300c/9122058639146409_0x0.m4a"
   },
   {
     "id": "fe74c4b9-1a66-4598-98a4-8d216b860596",

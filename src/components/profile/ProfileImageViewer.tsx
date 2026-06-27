@@ -61,15 +61,9 @@ export default function ProfileImageViewer({
 
   function downloadImage() {
     const filename = getFileName(src, name);
-
-    const isInternalFile = src.startsWith('/');
-
-    const href = isInternalFile
-      ? src
-      : `/api/download?url=${encodeURIComponent(src)}&filename=${encodeURIComponent(filename)}`;
+    const href = `/api/download?url=${encodeURIComponent(src)}&filename=${encodeURIComponent(filename)}`;
 
     const anchor = document.createElement('a');
-
     anchor.href = href;
     anchor.download = filename;
     anchor.rel = 'noopener';

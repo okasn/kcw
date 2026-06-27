@@ -60,4 +60,7 @@ export type ChatMessage = {
 
   deleted?: boolean;
   isHidden?: boolean;
+
+  contentOriginalUrl?: string | null;
+thumbnailOriginalUrl?: string | null;
 };

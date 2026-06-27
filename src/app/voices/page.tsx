@@ -10,12 +10,19 @@ export default async function VoicesPage() {
     .filter((msg) => getKind(msg) === 'audio')
     .map((msg) => {
       const date = msg.createdAt.slice(0, 10);
+      const url = getMediaUrl(msg);
+      const originalUrl =
+        typeof msg.contentOriginalUrl === 'string'
+          ? msg.contentOriginalUrl
+          : null;
 
       return {
         id: msg.id,
         createdAt: msg.createdAt,
         runningTime: msg.runningTime,
-        url: getMediaUrl(msg),
+        url,
+        originalUrl,
+        contentOriginalUrl: originalUrl,
         chatHref: `/chat/${date}#msg-${msg.id}`,
       };
     })

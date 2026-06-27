@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { preload } from 'react-dom';
 import { formatKoreanTime } from '@/lib/format';
+import { assetUrl } from '@/lib/cdn';
 import { getKind, getReplyPreview } from '@/lib/message';
 import { getProfileByDate } from '@/lib/profile';
 import type { ChatMessage, Manifest } from '@/lib/types';
@@ -28,7 +29,9 @@ export default function MessageItem({
   const kind = getKind(msg);
   const currentProfile = getProfileByDate(profile, msg.createdAt);
 
-  preload(currentProfile.avatar, {
+  const avatarUrl = assetUrl(currentProfile.avatar);
+
+  preload(avatarUrl, {
     as: 'image',
   });
 
@@ -54,7 +57,7 @@ export default function MessageItem({
     >
       <div className="avatar">
         <ProfileImageViewer
-          src={currentProfile.avatar}
+          src={avatarUrl}
           alt={currentProfile.artistNickname}
           name={currentProfile.artistNickname}
         />

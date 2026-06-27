@@ -7,6 +7,7 @@ import HomeContactMenu from '@/components/home/HomeContactMenu';
 import { getManifest } from '@/lib/getManifest';
 import { getDayGroups } from '@/lib/getArchiveData';
 import { getKoreanNow } from '@/lib/format';
+import { assetUrl } from '@/lib/cdn';
 import { preload } from 'react-dom';
 export const dynamic = 'force-dynamic';
 
@@ -33,7 +34,7 @@ export default async function HomePage() {
   );
 
   for (const avatarSrc of avatarPreloadList) {
-    preload(avatarSrc, {
+    preload(assetUrl(avatarSrc), {
       as: 'image',
     });
   }
@@ -101,7 +102,7 @@ export default async function HomePage() {
             <div className="homeWelcome">
               <div className="homeMessage">
                 <ProfileImageViewer
-                  src={profile.defaultAvatar}
+                  src={assetUrl(profile.defaultAvatar)}
                   alt={profile.name}
                   name={profile.name}
                 />
@@ -115,7 +116,7 @@ export default async function HomePage() {
 
               <div className="homeMessage">
                 <ProfileImageViewer
-                  src="/profile/251227.jpeg"
+                  src={assetUrl('/profile/251227.jpeg')}
                   alt={profile.name}
                   name={profile.name}
                 />
@@ -189,10 +190,10 @@ export default async function HomePage() {
 
               <div className="homeNoticeLine homeContactLine">
                 <div className="homeContactText">
-  <span>모든 문의는</span>
-  <HomeContactMenu />
-  <span>로 부탁드립니다</span>
-</div>
+                  <span>모든 문의는</span>
+                  <HomeContactMenu />
+                  <span>로 부탁드립니다</span>
+                </div>
               </div>
 
             </div>

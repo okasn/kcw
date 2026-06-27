@@ -10,6 +10,8 @@ type VoiceItem = {
   createdAt: string;
   runningTime: number | string | null | undefined;
   url: string;
+  originalUrl?: string | null;
+  contentOriginalUrl?: string | null;
   chatHref: string;
 };
 
@@ -33,6 +35,10 @@ function formatShortDate(iso: string) {
   const min = String(d.getMinutes()).padStart(2, '0');
 
   return `${yy}.${mm}.${dd} ${isPM ? '오후' : '오전'} ${h}:${min}`;
+}
+
+function getFallbackUrl(voice: VoiceItem) {
+  return voice.contentOriginalUrl || voice.originalUrl || null;
 }
 
 export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) {
@@ -276,43 +282,49 @@ export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) 
       </div>
 
       <div className="voiceGrid">
-        {visibleVoices.map((voice) => (
-          <article key={voice.id} className="voiceMiniCard">
-            <div className="voiceMiniTop">
-              <span>{formatShortDate(voice.createdAt)}</span>
+        {visibleVoices.map((voice) => {
+          const fallbackUrl = getFallbackUrl(voice);
+          const downloadUrl = fallbackUrl || voice.url;
 
-              <div className="voiceMiniActions">
-                <Link
-                  href={voice.chatHref}
-                  className="voiceActionLink"
-                  aria-label="채팅에서 보기"
-                  onClick={rememberListState}
-                >
-                  <ArrowUpRight size={12} strokeWidth={1.8} />
-                </Link>
+          return (
+            <article key={voice.id} className="voiceMiniCard">
+              <div className="voiceMiniTop">
+                <span>{formatShortDate(voice.createdAt)}</span>
 
-                <a
-                  href={voice.url}
-                  download
-                  className="voiceActionLink"
-                  aria-label="음성 다운로드"
-                >
-                  <Download size={12} strokeWidth={1.8} />
-                </a>
+                <div className="voiceMiniActions">
+                  <Link
+                    href={voice.chatHref}
+                    className="voiceActionLink"
+                    aria-label="채팅에서 보기"
+                    onClick={rememberListState}
+                  >
+                    <ArrowUpRight size={12} strokeWidth={1.8} />
+                  </Link>
+
+                  <a
+                    href={downloadUrl}
+                    download
+                    className="voiceActionLink"
+                    aria-label="음성 다운로드"
+                  >
+                    <Download size={12} strokeWidth={1.8} />
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <VoiceMessage
-              msg={{
-                id: voice.id,
-                createdAt: voice.createdAt,
-                runningTime: voice.runningTime,
-                content: voice.url,
-                type: 'sound',
-              }}
-            />
-          </article>
-        ))}
+              <VoiceMessage
+                msg={{
+                  id: voice.id,
+                  createdAt: voice.createdAt,
+                  runningTime: voice.runningTime,
+                  content: voice.url,
+                  contentOriginalUrl: fallbackUrl,
+                  type: 'sound',
+                }}
+              />
+            </article>
+          );
+        })}
       </div>
 
       {visibleCount < filteredVoices.length && (
