@@ -11,7 +11,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.kcws21.kr"),
+  metadataBase: new URL("https://kcws21.kr"),
 
   title: "💖💚",
   description: "트리플에스 김채원 프롬 아카이브",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "💖💚",
     description: "트리플에스 김채원 프롬 아카이브",
     type: "website",
-    url: "https://www.kcws21.kr",
+    url: "https://kcws21.kr",
     images: ["/og.jpg"],
   },
 
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://www.kcws21.kr",
+    canonical: "https://kcws21.kr",
   },
 
   robots: {
