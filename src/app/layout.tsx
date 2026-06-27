@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kcws21.kr"),
 
   title: "💖💚",
-  description: "트리플에스 김채원 프롬 아카이브",
+  description: "tripleS 김채원 프롬 아카이브",
 
   openGraph: {
     title: "💖💚",
-    description: "트리플에스 김채원 프롬 아카이브",
+    description: "tripleS 김채원 프롬 아카이브",
     type: "website",
     url: "https://kcws21.kr",
     images: ["/og.jpg"],
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@pupzei",
     title: "💖💚",
-    description: "트리플에스 김채원 프롬 아카이브",
+    description: "tripleS 김채원 프롬 아카이브",
     images: ["/og.jpg"],
   },
 
