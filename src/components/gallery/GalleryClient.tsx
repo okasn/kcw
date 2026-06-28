@@ -232,21 +232,29 @@ export default function GalleryClient({ items }: { items: LightboxItem[] }) {
             }}
           >
             <img
-              src={item.thumb || item.url}
-              alt=""
-              loading="lazy"
-              ref={(node) => {
-                if (node?.complete) {
-                  node.classList.add('isLoaded');
-                }
-              }}
-              onLoad={(e) => {
-                e.currentTarget.classList.add('isLoaded');
-              }}
-              onError={(e) => {
-                e.currentTarget.classList.add('isLoaded');
-              }}
-            />
+  src={item.thumb || item.url}
+  alt=""
+  loading="lazy"
+  ref={(node) => {
+    if (node?.complete) {
+      node.classList.add('isLoaded');
+    }
+  }}
+  onLoad={(e) => {
+    e.currentTarget.classList.add('isLoaded');
+  }}
+  onError={(e) => {
+    const img = e.currentTarget;
+    const fallback = item.fallbackThumb || item.fallbackUrl;
+
+    if (fallback && img.src !== fallback) {
+      img.src = fallback;
+      return;
+    }
+
+    img.classList.add('isLoaded');
+  }}
+/>
 
             {item.kind === 'video' && (
               <div className="galleryPlay">

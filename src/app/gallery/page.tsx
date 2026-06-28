@@ -1,7 +1,14 @@
 import SiteNav from '@/components/layout/SiteNav';
 import GalleryClient from '@/components/gallery/GalleryClient';
 import { getAllMessages } from '@/lib/getArchiveData';
-import { getKind, getMediaUrl, getThumbnailUrl } from '@/lib/message';
+import { getKoreanDateKey } from '@/lib/format';
+import {
+  getFallbackMediaUrl,
+  getFallbackThumbnailUrl,
+  getKind,
+  getMediaUrl,
+  getThumbnailUrl,
+} from '@/lib/message';
 import { getManifest } from '@/lib/getManifest';
 import { getArtistNicknameByDate } from '@/lib/profile';
 
@@ -15,13 +22,16 @@ export default async function GalleryPage() {
       return kind === 'image' || kind === 'video';
     })
     .map((msg) => {
-      const date = msg.createdAt.slice(0, 10);
+      const date = getKoreanDateKey(msg.createdAt);
+      const kind = getKind(msg);
 
       return {
         id: msg.id,
-        kind: getKind(msg),
+        kind,
         url: getMediaUrl(msg),
         thumb: getThumbnailUrl(msg),
+        fallbackUrl: getFallbackMediaUrl(msg),
+        fallbackThumb: getFallbackThumbnailUrl(msg),
         createdAt: msg.createdAt,
         artistName: getArtistNicknameByDate(manifest.profile, msg.createdAt),
         runningTime: msg.runningTime,

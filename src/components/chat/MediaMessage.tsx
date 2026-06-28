@@ -2,8 +2,13 @@
 
 import { useState } from 'react';
 import { Play } from 'lucide-react';
-import { getMediaUrl, getThumbnailUrl } from '@/lib/message';
-import { formatDuration } from '@/lib/format';
+import {
+  getFallbackMediaUrl,
+  getFallbackThumbnailUrl,
+  getMediaUrl,
+  getThumbnailUrl,
+} from '@/lib/message';
+import { formatDuration, getKoreanDateKey } from '@/lib/format';
 import type { ChatMessage } from '@/lib/types';
 import MediaLightbox, { type LightboxItem } from '@/components/media/MediaLightbox';
 
@@ -22,23 +27,41 @@ export default function MediaMessage({
 
   const url = getMediaUrl(msg);
   const thumb = getThumbnailUrl(msg);
+  const fallbackUrl = getFallbackMediaUrl(msg);
+  const fallbackThumb = getFallbackThumbnailUrl(msg);
+
+  const [currentUrl, setCurrentUrl] = useState(url);
+  const [currentThumb, setCurrentThumb] = useState(thumb || url);
 
   if (!url) return <div className="textBubble">지원하지 않는 미디어</div>;
 
   if (kind === 'emoticon') {
-    return <img className="emoticonImage" src={url} alt="" />;
+    return (
+      <img
+        className="emoticonImage"
+        src={currentUrl}
+        alt=""
+        onError={() => {
+          if (fallbackUrl && currentUrl !== fallbackUrl) {
+            setCurrentUrl(fallbackUrl);
+          }
+        }}
+      />
+    );
   }
 
   const fallbackItem: LightboxItem = {
-    id: msg.id,
-    kind,
-    url,
-    thumb,
-    createdAt: msg.createdAt,
-    artistName: '김채원',
-    runningTime: msg.runningTime,
-    chatHref: `/chat/${msg.createdAt.slice(0, 10)}#msg-${msg.id}`,
-  };
+  id: msg.id,
+  kind,
+  url: currentUrl,
+  thumb: currentThumb,
+  fallbackUrl,
+  fallbackThumb,
+  createdAt: msg.createdAt,
+  artistName: '김채원',
+  runningTime: msg.runningTime,
+  chatHref: `/chat/${getKoreanDateKey(msg.createdAt)}#msg-${msg.id}`,
+};
 
   const viewerItems = mediaItems?.length ? mediaItems : [fallbackItem];
   const viewerIndex = mediaIndex >= 0 ? mediaIndex : 0;
@@ -50,7 +73,22 @@ export default function MediaMessage({
         type="button"
         onClick={() => setOpen(true)}
       >
-        <img className="mediaCard" src={thumb || url} alt="" loading="lazy" />
+        <img
+          className="mediaCard"
+          src={currentThumb || currentUrl}
+          alt=""
+          loading="lazy"
+          onError={() => {
+            if (fallbackThumb && currentThumb !== fallbackThumb) {
+              setCurrentThumb(fallbackThumb);
+              return;
+            }
+
+            if (fallbackUrl && currentThumb !== fallbackUrl) {
+              setCurrentThumb(fallbackUrl);
+            }
+          }}
+        />
 
         {kind === 'video' && (
           <span className="chatVideoOverlay">

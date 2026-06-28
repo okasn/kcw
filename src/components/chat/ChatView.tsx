@@ -1,6 +1,7 @@
 import type { ChatMessage, Manifest } from '@/lib/types';
 import MessageItem from './MessageItem';
 import DateDivider from './DateDivider';
+import { getKoreanDateKey } from '@/lib/format';
 
 export default function ChatView({
   messages,
@@ -14,7 +15,7 @@ export default function ChatView({
   return (
     <div className="chatScreen">
       {messages.map((msg) => {
-        const date = msg.createdAt.slice(0, 10);
+        const date = getKoreanDateKey(msg.createdAt);
         const showDate = date !== lastDate;
         lastDate = date;
 

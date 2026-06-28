@@ -72,10 +72,20 @@ export default function MessageItem({
     <p className={msg.mentionedMessageEmoticonItem ? 'hasEmoticon' : ''}>
       {msg.mentionedMessageEmoticonItem?.imageURL && (
         <img
-          className="replyPreviewEmoticon"
-          src={msg.mentionedMessageEmoticonItem.imageURL}
-          alt=""
-        />
+  className="replyPreviewEmoticon"
+  src={msg.mentionedMessageEmoticonItem.imageURL}
+  alt=""
+  onError={(event) => {
+    const img = event.currentTarget;
+    const fallback =
+      msg.mentionedMessageEmoticonItem?.imageURLOriginalUrl ||
+      msg.mentionedMessageEmoticonItemOriginal?.imageURL;
+
+    if (fallback && img.src !== fallback) {
+      img.src = fallback;
+    }
+  }}
+/>
       )}
       <span>{getReplyPreview(msg)}</span>
     </p>

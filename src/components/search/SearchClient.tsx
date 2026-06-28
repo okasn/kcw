@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowUp, Search, X } from 'lucide-react';
+import { getKoreanDateKey } from '@/lib/format';
 
 type SearchMessage = {
   id: string;
@@ -22,18 +23,17 @@ const MAX_RECENT = 8;
 const PAGE_SIZE = 50;
 
 function formatDate(iso: string) {
-  const d = new Date(iso);
-  const yy = String(d.getFullYear()).slice(2);
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
+  const dateKey = getKoreanDateKey(iso);
+  const [yyyy, mm, dd] = dateKey.split('-');
 
-  const isPM = d.getHours() >= 12;
-  let h = d.getHours() % 12;
-  if (h === 0) h = 12;
+  const time = new Intl.DateTimeFormat('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(new Date(iso));
 
-  const min = String(d.getMinutes()).padStart(2, '0');
-
-  return `${yy}.${mm}.${dd} ${isPM ? '오후' : '오전'} ${h}:${min}`;
+  return `${yyyy.slice(2)}.${mm}.${dd} ${time}`;
 }
 
 function highlightText(text: string, keyword: string) {

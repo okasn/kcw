@@ -299,7 +299,18 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
           >
             <div className="dayThumb">
               {day.thumbnail ? (
-                <img src={day.thumbnail} alt="" />
+                <img
+  src={day.thumbnail}
+  alt=""
+  onError={(e) => {
+    const img = e.currentTarget;
+    const fallback = day.thumbnailFallback;
+
+    if (fallback && img.src !== fallback) {
+      img.src = fallback;
+    }
+  }}
+/>
               ) : (
                 <div className="dayEmpty">
                   <span>{day.shortDate}</span>

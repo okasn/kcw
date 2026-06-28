@@ -5,9 +5,16 @@ import Link from 'next/link';
 import { ArrowUp } from 'lucide-react';
 import MessageItem from './MessageItem';
 import DateDivider from './DateDivider';
+import { getKoreanDateKey } from '@/lib/format';
 import type { ChatMessage, Manifest } from '@/lib/types';
 import type { DayGroup } from '@/lib/getArchiveData';
-import { getKind, getMediaUrl, getThumbnailUrl } from '@/lib/message';
+import {
+  getFallbackMediaUrl,
+  getFallbackThumbnailUrl,
+  getKind,
+  getMediaUrl,
+  getThumbnailUrl,
+} from '@/lib/message';
 import { getArtistNicknameByDate } from '@/lib/profile';
 import type { LightboxItem } from '@/components/media/MediaLightbox';
 
@@ -33,16 +40,22 @@ export default function ChatDateClient({
         const kind = getKind(msg);
         return kind === 'image' || kind === 'video';
       })
-      .map((msg) => ({
-        id: msg.id,
-        kind: getKind(msg),
-        url: getMediaUrl(msg),
-        thumb: getThumbnailUrl(msg),
-        createdAt: msg.createdAt,
-        artistName: getArtistNicknameByDate(profile, msg.createdAt),
-        runningTime: msg.runningTime,
-        chatHref: `/chat/${msg.createdAt.slice(0, 10)}#msg-${msg.id}`,
-      }))
+      .map((msg) => {
+  const kind = getKind(msg);
+
+  return {
+    id: msg.id,
+    kind,
+    url: getMediaUrl(msg),
+    thumb: getThumbnailUrl(msg),
+    fallbackUrl: getFallbackMediaUrl(msg),
+    fallbackThumb: getFallbackThumbnailUrl(msg),
+    createdAt: msg.createdAt,
+    artistName: getArtistNicknameByDate(profile, msg.createdAt),
+    runningTime: msg.runningTime,
+    chatHref: `/chat/${getKoreanDateKey(msg.createdAt)}#msg-${msg.id}`,
+  };
+})
       .filter((item) => item.url);
   }, [messages, profile]);
 

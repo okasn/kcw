@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUp, ArrowUpRight, Download, ListFilter } from 'lucide-react';
 import VoiceMessage from '@/components/chat/VoiceMessage';
+import { getKoreanDateKey } from '@/lib/format';
 
 type VoiceItem = {
   id: string;
@@ -23,18 +24,17 @@ const SCROLL_Y_KEY = 'voiceScrollY';
 const RESTORE_STATE_KEY = 'voiceRestoreState';
 
 function formatShortDate(iso: string) {
-  const d = new Date(iso);
-  const yy = String(d.getFullYear()).slice(2);
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
+  const dateKey = getKoreanDateKey(iso);
+  const [yyyy, mm, dd] = dateKey.split('-');
 
-  const isPM = d.getHours() >= 12;
-  let h = d.getHours() % 12;
-  if (h === 0) h = 12;
+  const time = new Intl.DateTimeFormat('ko-KR', {
+    timeZone: 'Asia/Seoul',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(new Date(iso));
 
-  const min = String(d.getMinutes()).padStart(2, '0');
-
-  return `${yy}.${mm}.${dd} ${isPM ? '오후' : '오전'} ${h}:${min}`;
+  return `${yyyy.slice(2)}.${mm}.${dd} ${time}`;
 }
 
 function getFallbackUrl(voice: VoiceItem) {
@@ -116,34 +116,37 @@ export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) 
   }, []);
 
   const years = useMemo(() => {
-    return Array.from(new Set(voices.map((v) => v.createdAt.slice(0, 4)))).sort(
-      (a, b) => (a < b ? 1 : -1)
-    );
-  }, [voices]);
+  return Array.from(
+    new Set(voices.map((v) => getKoreanDateKey(v.createdAt).slice(0, 4)))
+  ).sort((a, b) => (a < b ? 1 : -1));
+}, [voices]);
 
-  const months = useMemo(() => {
-    const base =
-      year === 'all'
-        ? voices
-        : voices.filter((v) => v.createdAt.slice(0, 4) === year);
+const months = useMemo(() => {
+  const base =
+    year === 'all'
+      ? voices
+      : voices.filter((v) => getKoreanDateKey(v.createdAt).slice(0, 4) === year);
 
-    return Array.from(new Set(base.map((v) => v.createdAt.slice(5, 7)))).sort(
-      (a, b) => Number(a) - Number(b)
-    );
-  }, [voices, year]);
+  return Array.from(
+    new Set(base.map((v) => getKoreanDateKey(v.createdAt).slice(5, 7)))
+  ).sort((a, b) => Number(a) - Number(b));
+}, [voices, year]);
 
-  const filteredVoices = useMemo(() => {
-    const result = voices.filter((voice) => {
-      if (year !== 'all' && voice.createdAt.slice(0, 4) !== year) return false;
-      if (month !== 'all' && voice.createdAt.slice(5, 7) !== month) return false;
-      return true;
-    });
+const filteredVoices = useMemo(() => {
+  const result = voices.filter((voice) => {
+    const dateKey = getKoreanDateKey(voice.createdAt);
 
-    return result.sort((a, b) => {
-      const diff = +new Date(a.createdAt) - +new Date(b.createdAt);
-      return sort === 'oldest' ? diff : -diff;
-    });
-  }, [voices, year, month, sort]);
+    if (year !== 'all' && dateKey.slice(0, 4) !== year) return false;
+    if (month !== 'all' && dateKey.slice(5, 7) !== month) return false;
+
+    return true;
+  });
+
+  return result.sort((a, b) => {
+    const diff = +new Date(a.createdAt) - +new Date(b.createdAt);
+    return sort === 'oldest' ? diff : -diff;
+  });
+}, [voices, year, month, sort]);
 
   const visibleVoices = filteredVoices.slice(0, visibleCount);
 

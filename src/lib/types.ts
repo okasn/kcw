@@ -63,4 +63,8 @@ export type ChatMessage = {
 
   contentOriginalUrl?: string | null;
 thumbnailOriginalUrl?: string | null;
+
+emoticonItemOriginal?: any;
+mentionedMessageEmoticonItemOriginal?: any;
+
 };

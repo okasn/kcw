@@ -2,6 +2,7 @@ import SiteNav from '@/components/layout/SiteNav';
 import VoicesClient from '@/components/voices/VoicesClient';
 import { getAllMessages } from '@/lib/getArchiveData';
 import { getKind, getMediaUrl } from '@/lib/message';
+import { getKoreanDateKey } from '@/lib/format';
 
 export default async function VoicesPage() {
   const messages = await getAllMessages();
@@ -9,7 +10,7 @@ export default async function VoicesPage() {
   const voices = messages
     .filter((msg) => getKind(msg) === 'audio')
     .map((msg) => {
-      const date = msg.createdAt.slice(0, 10);
+      const date = getKoreanDateKey(msg.createdAt);
       const url = getMediaUrl(msg);
       const originalUrl =
         typeof msg.contentOriginalUrl === 'string'

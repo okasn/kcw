@@ -2,7 +2,13 @@ import fs from 'fs/promises';
 import path from 'path';
 import { cache } from 'react';
 import { getManifest } from './getManifest';
-import { getKind, getThumbnailUrl, normalizeMessages } from './message';
+import { getKoreanDateKey } from './format';
+import {
+  getFallbackThumbnailUrl,
+  getKind,
+  getThumbnailUrl,
+  normalizeMessages,
+} from './message';
 import type { ChatMessage, MonthItem } from './types';
 
 export type DayGroup = {
@@ -11,6 +17,7 @@ export type DayGroup = {
   month: string;
   shortDate: string;
   thumbnail: string;
+  thumbnailFallback?: string;
   messageCount: number;
   imageCount: number;
   videoCount: number;
@@ -46,7 +53,7 @@ export const getDayGroups = cache(async (): Promise<DayGroup[]> => {
   const map = new Map<string, ChatMessage[]>();
 
   for (const msg of messages) {
-    const date = msg.createdAt.slice(0, 10);
+    const date = getKoreanDateKey(msg.createdAt);
 
     if (!map.has(date)) {
       map.set(date, []);
@@ -81,6 +88,7 @@ export const getDayGroups = cache(async (): Promise<DayGroup[]> => {
         month: date.slice(5, 7),
         shortDate: date.slice(2).replaceAll('-', ''),
         thumbnail: media ? getThumbnailUrl(media) : '',
+        thumbnailFallback: media ? getFallbackThumbnailUrl(media) : '',
         messageCount: items.length,
         imageCount,
         videoCount,

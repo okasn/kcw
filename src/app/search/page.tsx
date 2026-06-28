@@ -2,6 +2,7 @@ import SiteNav from '@/components/layout/SiteNav';
 import SearchClient from '@/components/search/SearchClient';
 import { getAllMessages } from '@/lib/getArchiveData';
 import { getTextContent } from '@/lib/message';
+import { getKoreanDateKey } from '@/lib/format';
 
 function isMediaUrlText(value: string) {
   const text = value.trim();
@@ -35,7 +36,7 @@ export default async function SearchPage() {
         text,
         replyText,
         searchText: compactTextParts([text, replyText]),
-        chatHref: `/chat/${msg.createdAt.slice(0, 10)}#msg-${msg.id}`,
+        chatHref: `/chat/${getKoreanDateKey(msg.createdAt)}#msg-${msg.id}`,
       };
     })
     .filter((msg) => msg.searchText.trim());

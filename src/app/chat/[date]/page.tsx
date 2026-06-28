@@ -3,6 +3,7 @@ import ChatDateClient from '@/components/chat/ChatDateClient';
 import { getAllMessages, getDayGroups } from '@/lib/getArchiveData';
 import { getManifest } from '@/lib/getManifest';
 import ChatDateNotFound from '@/components/chat/ChatDateNotFound';
+import { getKoreanDateKey } from '@/lib/format';
 
 export default async function ChatDatePage({
   params,
@@ -47,8 +48,8 @@ export default async function ChatDatePage({
   }
 
   const dayMessages = messages
-    .filter((msg) => msg.createdAt.slice(0, 10) === date)
-    .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt));
+  .filter((msg) => getKoreanDateKey(msg.createdAt) === date)
+  .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt));
 
   const prevDay = days[dayIndex + 1];
   const nextDay = days[dayIndex - 1];

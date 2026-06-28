@@ -9,6 +9,8 @@ export type LightboxItem = {
   kind: string;
   url: string;
   thumb?: string;
+  fallbackUrl?: string;
+  fallbackThumb?: string;
   createdAt?: string;
   artistName?: string;
   runningTime?: number | string | null;
@@ -36,6 +38,9 @@ export default function MediaLightbox({
 
   const item = items[index];
 
+  const displayUrl = item?.url || '';
+  const displayThumb = item?.thumb || undefined;
+
   function getDownloadName(target: LightboxItem) {
     const rawName = target.url.split('/').pop()?.split('?')[0];
 
@@ -62,7 +67,7 @@ export default function MediaLightbox({
 
   useEffect(() => {
     setImageLoaded(false);
-  }, [item?.id]);
+  }, [item?.id, item?.url]);
 
   const dateText = useMemo(() => {
     if (!item?.createdAt) return '';
@@ -117,7 +122,7 @@ export default function MediaLightbox({
     if (diff < -42) next();
   }
 
-  if (!item) return null;
+  if (!item || !displayUrl) return null;
 
   return (
     <div className="viewerOverlay">
@@ -167,8 +172,8 @@ export default function MediaLightbox({
             <video
               key={item.id}
               className="viewerObject"
-              src={item.url}
-              poster={item.thumb}
+              src={displayUrl}
+              poster={displayThumb}
               controls
               playsInline
             />
@@ -185,9 +190,19 @@ export default function MediaLightbox({
               <img
                 key={item.id}
                 className={`viewerObject ${imageLoaded ? 'isLoaded' : 'isLoading'}`}
-                src={item.url}
+                src={displayUrl}
                 alt=""
                 onLoad={() => setImageLoaded(true)}
+                onError={(event) => {
+                  const img = event.currentTarget;
+
+                  if (item.fallbackUrl && img.src !== item.fallbackUrl) {
+                    img.src = item.fallbackUrl;
+                    return;
+                  }
+
+                  setImageLoaded(true);
+                }}
               />
             </>
           )}
