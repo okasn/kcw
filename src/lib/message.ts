@@ -8,24 +8,45 @@ export function normalizeMessages(data: any): ChatMessage[] {
     .sort((a: ChatMessage, b: ChatMessage) => +new Date(a.createdAt) - +new Date(b.createdAt));
 }
 
+function getEmoticonUrl(item: any) {
+  if (!item) return '';
+
+  return (
+    item.imageURL ||
+    item.imageUrl ||
+    item.thumbnailURL ||
+    item.thumbnailUrl ||
+    item.resourceURL ||
+    item.resourceUrl ||
+    item.fileURL ||
+    item.fileUrl ||
+    item.url ||
+    ''
+  );
+}
+
+function getEmoticonOriginalUrl(item: any) {
+  if (!item) return '';
+
+  return (
+    item.imageURLOriginalUrl ||
+    item.imageUrlOriginalUrl ||
+    item.thumbnailURLOriginalUrl ||
+    item.thumbnailUrlOriginalUrl ||
+    item.resourceURLOriginalUrl ||
+    item.resourceUrlOriginalUrl ||
+    item.fileURLOriginalUrl ||
+    item.fileUrlOriginalUrl ||
+    item.urlOriginalUrl ||
+    ''
+  );
+}
+
 export function getMediaUrl(msg: ChatMessage) {
   const type = String(msg.type || '').toLowerCase();
 
   if (msg.emoticonItem) {
-    const e = msg.emoticonItem;
-
-    return (
-      e.imageURL ||
-      e.imageUrl ||
-      e.thumbnailURL ||
-      e.thumbnailUrl ||
-      e.resourceURL ||
-      e.resourceUrl ||
-      e.fileURL ||
-      e.fileUrl ||
-      e.url ||
-      ''
-    );
+    return getEmoticonUrl(msg.emoticonItem);
   }
 
   if (type.includes('video')) {
@@ -54,6 +75,56 @@ export function getMediaUrl(msg: ChatMessage) {
   return '';
 }
 
+export function getFallbackMediaUrl(msg: ChatMessage) {
+  const type = String(msg.type || '').toLowerCase();
+
+  if (msg.emoticonItem) {
+    return getEmoticonOriginalUrl(msg.emoticonItem);
+  }
+
+  if (type.includes('video')) {
+    if (typeof msg.contentOriginalUrl === 'string' && msg.contentOriginalUrl) {
+      return msg.contentOriginalUrl;
+    }
+
+    return '';
+  }
+
+  if (type.includes('voice') || type.includes('audio') || type === 'sound') {
+    if (typeof msg.contentOriginalUrl === 'string' && msg.contentOriginalUrl) {
+      return msg.contentOriginalUrl;
+    }
+
+    if (typeof msg.thumbnailOriginalUrl === 'string' && msg.thumbnailOriginalUrl) {
+      return msg.thumbnailOriginalUrl;
+    }
+
+    return '';
+  }
+
+  if (type.includes('image') || type.includes('photo')) {
+    if (typeof msg.contentOriginalUrl === 'string' && msg.contentOriginalUrl) {
+      return msg.contentOriginalUrl;
+    }
+
+    if (typeof msg.thumbnailOriginalUrl === 'string' && msg.thumbnailOriginalUrl) {
+      return msg.thumbnailOriginalUrl;
+    }
+
+    return '';
+  }
+
+  if (typeof msg.contentOriginalUrl === 'string' && msg.contentOriginalUrl) {
+    return msg.contentOriginalUrl;
+  }
+
+  if (typeof msg.thumbnailOriginalUrl === 'string' && msg.thumbnailOriginalUrl) {
+    return msg.thumbnailOriginalUrl;
+  }
+
+  return '';
+}
+
 export function getThumbnailUrl(msg: ChatMessage) {
   const type = String(msg.type || '').toLowerCase();
 
@@ -69,13 +140,34 @@ export function getThumbnailUrl(msg: ChatMessage) {
   return getMediaUrl(msg);
 }
 
+export function getFallbackThumbnailUrl(msg: ChatMessage) {
+  const type = String(msg.type || '').toLowerCase();
+
+  if (type.includes('video')) {
+    return typeof msg.thumbnailOriginalUrl === 'string'
+      ? msg.thumbnailOriginalUrl
+      : '';
+  }
+
+  if (type.includes('image') || type.includes('photo')) {
+    if (typeof msg.thumbnailOriginalUrl === 'string' && msg.thumbnailOriginalUrl) {
+      return msg.thumbnailOriginalUrl;
+    }
+
+    if (typeof msg.contentOriginalUrl === 'string' && msg.contentOriginalUrl) {
+      return msg.contentOriginalUrl;
+    }
+  }
+
+  return getFallbackMediaUrl(msg);
+}
+
 export function getReplyPreview(msg: ChatMessage) {
   if (msg.mentionedMessageDeleted) return '삭제된 메시지입니다.';
   if (msg.mentionedMessageReported) return '신고된 메시지입니다.';
   if (msg.mentionedMessageContent) return msg.mentionedMessageContent;
   if (msg.mentionedMessageTranslatedMessage) return msg.mentionedMessageTranslatedMessage;
 
-  // 기존: return '이모티콘';
   if (msg.mentionedMessageEmoticonItem) return '';
 
   return '';
