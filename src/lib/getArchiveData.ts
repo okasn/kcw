@@ -24,28 +24,62 @@ export type DayGroup = {
   audioCount: number;
 };
 
+async function readMonthMessages(month: MonthItem): Promise<ChatMessage[]> {
+  const filePath = path.join(process.cwd(), 'public', month.file);
+
+  try {
+    const raw = await fs.readFile(filePath, 'utf8');
+    const parsed = JSON.parse(raw);
+    return normalizeMessages(parsed);
+  } catch {
+    return [];
+  }
+}
+
 export const getAllMessages = cache(async (): Promise<ChatMessage[]> => {
   const manifest = await getManifest();
-  const all: ChatMessage[] = [];
 
-  await Promise.all(
-    manifest.months.map(async (month: MonthItem) => {
-      const filePath = path.join(process.cwd(), 'public', month.file);
-
-      try {
-        const raw = await fs.readFile(filePath, 'utf8');
-        const parsed = JSON.parse(raw);
-        all.push(...normalizeMessages(parsed));
-      } catch {
-        // 파일이 없거나 JSON 파싱 실패하면 무시
-      }
-    })
+  const monthMessages = await Promise.all(
+    manifest.months.map((month: MonthItem) => readMonthMessages(month))
   );
 
-  return all.sort(
-    (a: ChatMessage, b: ChatMessage) =>
-      +new Date(b.createdAt) - +new Date(a.createdAt)
+  return monthMessages
+    .flat()
+    .sort(
+      (a: ChatMessage, b: ChatMessage) =>
+        +new Date(b.createdAt) - +new Date(a.createdAt)
+    );
+});
+
+export const getMessagesByDate = cache(async (date: string): Promise<ChatMessage[]> => {
+  const manifest = await getManifest();
+  const monthId = date.slice(0, 7);
+
+  const candidateMonths = manifest.months.filter((month: MonthItem) => {
+    if (month.id === monthId) return true;
+
+    // UTC → KST 날짜 경계 때문에 전월/다음월 파일에도 같은 KST 날짜가 걸칠 수 있음
+    const current = new Date(`${monthId}-01T00:00:00Z`);
+    const prev = new Date(current);
+    prev.setUTCMonth(prev.getUTCMonth() - 1);
+
+    const next = new Date(current);
+    next.setUTCMonth(next.getUTCMonth() + 1);
+
+    const prevId = `${prev.getUTCFullYear()}-${String(prev.getUTCMonth() + 1).padStart(2, '0')}`;
+    const nextId = `${next.getUTCFullYear()}-${String(next.getUTCMonth() + 1).padStart(2, '0')}`;
+
+    return month.id === prevId || month.id === nextId;
+  });
+
+  const monthMessages = await Promise.all(
+    candidateMonths.map((month: MonthItem) => readMonthMessages(month))
   );
+
+  return monthMessages
+    .flat()
+    .filter((msg) => getKoreanDateKey(msg.createdAt) === date)
+    .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt));
 });
 
 export const getDayGroups = cache(async (): Promise<DayGroup[]> => {
