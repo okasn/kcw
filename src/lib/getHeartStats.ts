@@ -22,7 +22,7 @@ type HeartDay = {
 const HEARTS = [
   '🩷', '❤️', '🧡', '💛', '💚', '🩵', '💙', '💜', '🖤', '🩶', '🤍', '🤎',
   '💔', '❤️‍🔥', '❤️‍🩹', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟',
-  '🫰', '🫶',
+  '🫰', '🫶', '♥️',
 ];
 
 export const getHeartStats = cache(async (): Promise<HeartStats> => {
