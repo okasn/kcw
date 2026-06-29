@@ -287,8 +287,8 @@ a {
     right: 0;
     bottom: 0;
     height: calc(64px + env(safe-area-inset-bottom));
-    padding: 0 max(18px, env(safe-area-inset-left)) env(safe-area-inset-bottom)
-      max(18px, env(safe-area-inset-right));
+    padding: 0 max(10px, env(safe-area-inset-left)) env(safe-area-inset-bottom)
+      max(10px, env(safe-area-inset-right));
     border-top: 1px solid var(--border-soft);
     display: flex;
     align-items: center;

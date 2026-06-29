@@ -901,8 +901,8 @@
 
   .heartStatsModal {
     width: 100%;
-    height: 82dvh;
-    max-height: 82dvh;
+    height: 92dvh;
+    max-height: 92dvh;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     border-bottom: 0;
     animation: heartStatsSheetIn 220ms ease-out both;
