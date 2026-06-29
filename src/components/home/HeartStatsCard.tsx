@@ -85,7 +85,7 @@ export default function HeartStatsCard({
                 <strong>{stats.length}개</strong>
               </div>
               <div>
-                <span>날짜</span>
+                <span>395일 중</span>
                 <strong>{dayCount}일</strong>
               </div>
             </div>
