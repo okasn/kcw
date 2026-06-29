@@ -41,6 +41,14 @@ function getFallbackUrl(voice: VoiceItem) {
   return voice.contentOriginalUrl || voice.originalUrl || null;
 }
 
+function getDownloadName(url: string, id: string) {
+  const rawName = url.split('/').pop()?.split('?')[0];
+
+  if (rawName) return decodeURIComponent(rawName);
+
+  return `voice-${id}.m4a`;
+}
+
 export default function VoicesClient({ voices = [] }: { voices?: VoiceItem[] }) {
   const [hydrated, setHydrated] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -287,7 +295,9 @@ const filteredVoices = useMemo(() => {
       <div className="voiceGrid">
         {visibleVoices.map((voice) => {
           const fallbackUrl = getFallbackUrl(voice);
-          const downloadUrl = fallbackUrl || voice.url;
+          const sourceUrl = fallbackUrl || voice.url;
+          const downloadName = getDownloadName(sourceUrl, voice.id);
+          const downloadUrl = `/api/download?url=${encodeURIComponent(sourceUrl)}&filename=${encodeURIComponent(downloadName)}`;
 
           return (
             <article key={voice.id} className="voiceMiniCard">

@@ -2,10 +2,10 @@ export const CDN_ORIGIN = 'https://cdn.kcws21.kr';
 
 const CDN_ENABLED = {
   profile: true,
-  emoticons: false,
-  voices: false,
-  videos: false,
-  images: false,
+  emoticons: true,
+  voices: true,
+  videos: true,
+  images: true,
   data: false,
 };
 
