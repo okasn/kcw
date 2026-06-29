@@ -83,50 +83,12 @@ export const getMessagesByDate = cache(async (date: string): Promise<ChatMessage
 });
 
 export const getDayGroups = cache(async (): Promise<DayGroup[]> => {
-  const messages = await getAllMessages();
-  const map = new Map<string, ChatMessage[]>();
+  const filePath = path.join(process.cwd(), 'public', 'data', 'day-index.json');
 
-  for (const msg of messages) {
-    const date = getKoreanDateKey(msg.createdAt);
-
-    if (!map.has(date)) {
-      map.set(date, []);
-    }
-
-    map.get(date)!.push(msg);
+  try {
+    const raw = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(raw) as DayGroup[];
+  } catch {
+    return [];
   }
-
-  return Array.from(map.entries())
-    .sort(([a], [b]) => (a < b ? 1 : -1))
-    .map(([date, items]) => {
-      const media = items.find((msg: ChatMessage) => {
-        const kind = getKind(msg);
-        return kind === 'image' || kind === 'video';
-      });
-
-      const imageCount = items.filter(
-        (msg: ChatMessage) => getKind(msg) === 'image'
-      ).length;
-
-      const videoCount = items.filter(
-        (msg: ChatMessage) => getKind(msg) === 'video'
-      ).length;
-
-      const audioCount = items.filter(
-        (msg: ChatMessage) => getKind(msg) === 'audio'
-      ).length;
-
-      return {
-        date,
-        year: date.slice(0, 4),
-        month: date.slice(5, 7),
-        shortDate: date.slice(2).replaceAll('-', ''),
-        thumbnail: media ? getThumbnailUrl(media) : '',
-        thumbnailFallback: media ? getFallbackThumbnailUrl(media) : '',
-        messageCount: items.length,
-        imageCount,
-        videoCount,
-        audioCount,
-      };
-    });
 });
