@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getHeartStats } from '@/lib/getHeartStats';
 import SiteNav from '@/components/layout/SiteNav';
 import HomeRecommendInfo from '@/components/home/HomeRecommendInfo';
 import HeartStatsCard from '@/components/home/HeartStatsCard';
@@ -20,9 +21,11 @@ function HeartIcon() {
   );
 }
 
+
 export default async function HomePage() {
   const manifest = await getManifest();
   const days = await getDayGroups();
+  const heartStats = await getHeartStats();
 
   const { archive, profile } = manifest;
 
@@ -200,7 +203,11 @@ export default async function HomePage() {
             </div>
           </section>
 
-          <HeartStatsCard />
+          <HeartStatsCard
+            stats={heartStats.stats}
+            total={heartStats.total}
+            dayCount={heartStats.dayCount}
+          />
 
           <HomeQuickSettings
             defaultNickname={archive.nickname}

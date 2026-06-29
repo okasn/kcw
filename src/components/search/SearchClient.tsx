@@ -15,6 +15,8 @@ type SearchMessage = {
   chatHref: string;
 };
 
+type SortMode = 'newest' | 'oldest';
+
 const RECENT_KEY = 'recentSearches';
 const ACTIVE_SCROLL_KEY = 'activeSearchScrollY';
 const ACTIVE_VISIBLE_COUNT_KEY = 'activeSearchVisibleCount';
@@ -61,17 +63,20 @@ function withSearchParams(href: string, query: string) {
   return `${path}?${params.toString()}${hash ? `#${hash}` : ''}`;
 }
 
-export default function SearchClient({ messages }: { messages: SearchMessage[] }) {
+export default function SearchClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [query, setQuery] = useState('');
+  const [sort, setSort] = useState<SortMode>('newest');
+  const [messages, setMessages] = useState<SearchMessage[]>([]);
+  const [searching, setSearching] = useState(false);
   const [recent, setRecent] = useState<string[]>([]);
   const [showTop, setShowTop] = useState(false);
   const [restoreScrollY, setRestoreScrollY] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
-const loadMoreRef = useRef<HTMLDivElement | null>(null);
-const restoreVisibleCountRef = useRef<number | null>(null);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const restoreVisibleCountRef = useRef<number | null>(null);
 
   useEffect(() => {
     try {
@@ -110,6 +115,45 @@ const restoreVisibleCountRef = useRef<number | null>(null);
   }, [searchParams]);
 
   useEffect(() => {
+    const value = query.trim();
+
+    if (!value) {
+      setMessages([]);
+      setSearching(false);
+      return;
+    }
+
+    const controller = new AbortController();
+
+    setSearching(true);
+
+    fetch(`/api/search?q=${encodeURIComponent(value)}`, {
+      signal: controller.signal,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('failed to search');
+        return res.json();
+      })
+      .then((data: { messages?: SearchMessage[] }) => {
+        setMessages(Array.isArray(data.messages) ? data.messages : []);
+      })
+      .catch((error) => {
+        if (error?.name !== 'AbortError') {
+          setMessages([]);
+        }
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) {
+          setSearching(false);
+        }
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [query]);
+
+  useEffect(() => {
     function onScroll() {
       setShowTop(window.scrollY > 360);
     }
@@ -123,13 +167,13 @@ const restoreVisibleCountRef = useRef<number | null>(null);
   }, []);
 
   const results = useMemo(() => {
-    const keyword = query.trim().toLowerCase();
-    if (!keyword) return [];
+    if (!query.trim()) return [];
 
-    return messages.filter((msg) =>
-      msg.searchText.toLowerCase().includes(keyword)
-    );
-  }, [messages, query]);
+    return [...messages].sort((a, b) => {
+      const diff = +new Date(a.createdAt) - +new Date(b.createdAt);
+      return sort === 'oldest' ? diff : -diff;
+    });
+  }, [messages, query, sort]);
 
   const visibleResults = results.slice(0, visibleCount);
 
@@ -158,7 +202,7 @@ const restoreVisibleCountRef = useRef<number | null>(null);
     if (restoreVisibleCountRef.current !== null) return;
 
     setVisibleCount(PAGE_SIZE);
-  }, [query]);
+  }, [query, sort]);
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -285,9 +329,23 @@ const restoreVisibleCountRef = useRef<number | null>(null);
       )}
 
       {query && (
-        <p className="searchCount">
-          {results.length ? `${results.length}개 결과` : '검색 결과 없음'}
-        </p>
+        <section className="compactHeader">
+          <span>
+            {searching ? '검색 중...' : results.length ? `${results.length}개 결과` : '검색 결과 없음'}
+          </span>
+
+          <div className="compactActions">
+            <button
+              type="button"
+              className="sortPill"
+              onClick={() => {
+                setSort((value) => (value === 'newest' ? 'oldest' : 'newest'));
+              }}
+            >
+              {sort === 'newest' ? '최신순' : '오래된순'}
+            </button>
+          </div>
+        </section>
       )}
 
       <div className="searchResultList">
@@ -296,12 +354,12 @@ const restoreVisibleCountRef = useRef<number | null>(null);
             href={withSearchParams(msg.chatHref, query)}
             className="searchResultItem"
             key={msg.id}
-          onClick={() => {
-            saveRecent(query);
-            sessionStorage.setItem(ACTIVE_SCROLL_KEY, String(window.scrollY));
-            sessionStorage.setItem(ACTIVE_VISIBLE_COUNT_KEY, String(visibleCount));
-            sessionStorage.setItem(RESTORE_SEARCH_KEY, 'true');
-          }}
+            onClick={() => {
+              saveRecent(query);
+              sessionStorage.setItem(ACTIVE_SCROLL_KEY, String(window.scrollY));
+              sessionStorage.setItem(ACTIVE_VISIBLE_COUNT_KEY, String(visibleCount));
+              sessionStorage.setItem(RESTORE_SEARCH_KEY, 'true');
+            }}
           >
             <span>{formatDate(msg.createdAt)}</span>
 
@@ -320,7 +378,7 @@ const restoreVisibleCountRef = useRef<number | null>(null);
         <div ref={loadMoreRef} className="loadMoreTrigger" />
       )}
 
-      {query && !results.length && (
+      {query && !searching && !results.length && (
         <p className="emptyStateText">해당 검색어가 포함된 채팅이 없습니다.</p>
       )}
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ChevronRight, X } from 'lucide-react';
 
 type HeartStat = {
@@ -8,34 +8,17 @@ type HeartStat = {
   count: number;
 };
 
-type HeartStatsResponse = {
+export default function HeartStatsCard({
+  stats,
+  total,
+  dayCount,
+}: {
+  stats: HeartStat[];
   total: number;
   dayCount: number;
-  stats: HeartStat[];
-};
-
-export default function HeartStatsCard() {
-  const [heartStats, setHeartStats] = useState<HeartStatsResponse | null>(null);
+}) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-
-  useEffect(() => {
-    fetch('/api/heart-stats')
-      .then((res) => {
-        if (!res.ok) throw new Error('failed to load heart stats');
-        return res.json();
-      })
-      .then((data: HeartStatsResponse) => {
-        if (
-          typeof data.total === 'number' &&
-          typeof data.dayCount === 'number' &&
-          Array.isArray(data.stats)
-        ) {
-          setHeartStats(data);
-        }
-      })
-      .catch(() => setHeartStats(null));
-  }, []);
 
   function openModal() {
     setClosing(false);
@@ -50,12 +33,6 @@ export default function HeartStatsCard() {
       setClosing(false);
     }, 190);
   }
-
-  const stats = heartStats?.stats || [];
-  const total = heartStats?.total || 0;
-  const dayCount = heartStats?.dayCount || 0;
-  const max = stats[0]?.count || 1;
-  const topFive = stats.slice(0, 5);
 
   if (!total) return null;
 
@@ -100,46 +77,29 @@ export default function HeartStatsCard() {
 
             <div className="heartStatsSummary">
               <div>
-                <strong>{total.toLocaleString()}개</strong>
                 <span>총 하트</span>
+                <strong>{total.toLocaleString()}개</strong>
               </div>
               <div>
-                <strong>{stats.length}개</strong>
                 <span>종류</span>
+                <strong>{stats.length}개</strong>
               </div>
               <div>
-                <strong>{dayCount}일</strong>
                 <span>날짜</span>
+                <strong>{dayCount}일</strong>
               </div>
             </div>
 
             <section className="heartStatsSection">
-              <h4>많이 보낸 하트</h4>
-
-              <div className="heartStatsTopGrid">
-                {topFive.map((item, index) => (
-                  <div key={item.heart}>
-                    <em>{index + 1}</em>
-                    <span>{item.heart}</span>
-                    <strong>{item.count.toLocaleString()}</strong>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="heartStatsSection">
-              <h4>전체 하트</h4>
-
               <div className="heartStatsList">
-                {stats.map((item) => (
+                {stats.map((item, index) => (
                   <div className="heartStatsRow" key={item.heart}>
                     <div className="heartStatsRowHead">
-                      <span>{item.heart}</span>
+                      <div className="heartStatsRankHeart">
+                        <em>{index + 1}</em>
+                        <span>{item.heart}</span>
+                      </div>
                       <strong>{item.count.toLocaleString()}개</strong>
-                    </div>
-
-                    <div className="heartStatsBar">
-                      <i style={{ width: `${Math.max(5, (item.count / max) * 100)}%` }} />
                     </div>
                   </div>
                 ))}

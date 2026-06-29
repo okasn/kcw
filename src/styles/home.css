@@ -161,6 +161,10 @@
     transform 160ms ease;
 }
 
+.homeQuickTheme:hover {
+  background: var(--surface-soft);
+}
+
 .homeQuickTheme svg {
   width: 16px;
   height: 16px;
@@ -689,6 +693,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 0;
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   background: var(--surface);
@@ -744,28 +749,32 @@
 }
 
 .heartStatsSummary div {
-  padding: 12px 8px;
+  padding: 12px 11px;
   border-radius: var(--radius-md);
   background: var(--surface-soft);
-  text-align: center;
+  text-align: left;
 }
 
 .heartStatsSummary strong {
   display: block;
-  font-size: 16px;
+  margin-top: 5px;
+  font-size: 14px;
   color: var(--text);
   letter-spacing: -0.02em;
 }
 
 .heartStatsSummary span {
   display: block;
-  margin-top: 4px;
+  margin: 0;
   font-size: 11px;
   color: var(--text-muted);
 }
 
 .heartStatsSection {
+  min-height: 0;
   padding: 0 18px 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .heartStatsSection h4 {
@@ -775,50 +784,21 @@
   font-weight: 600;
 }
 
-.heartStatsTopGrid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 7px;
-}
-
-.heartStatsTopGrid div {
-  min-width: 0;
-  padding: 10px 4px;
-  border-radius: var(--radius-md);
-  background: var(--surface-soft);
-  text-align: center;
-}
-
-.heartStatsTopGrid em {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 10px;
-  font-style: normal;
-  color: var(--text-muted);
-}
-
-.heartStatsTopGrid span {
-  display: block;
-  font-size: 21px;
-  line-height: 1.1;
-}
-
-.heartStatsTopGrid strong {
-  display: block;
-  margin-top: 5px;
-  font-size: 11px;
-  color: var(--text-secondary);
-}
 
 .heartStatsList {
-  max-height: 280px;
+  min-height: 0;
+  max-height: 340px;
   overflow-y: auto;
-  padding-right: 3px;
+  padding-right: 0;
   padding-bottom: 26px;
 }
 
 .heartStatsRow {
-  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 22px 34px minmax(0, 1fr) auto;
+  column-gap: 7px;
+  align-items: center;
+  padding: 12px 0;
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -827,36 +807,47 @@
 }
 
 .heartStatsRowHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 7px;
+  display: contents;
 }
 
-.heartStatsRowHead span {
-  font-size: 21px;
+
+.heartStatsRankHeart {
+  display: contents;
+}
+
+.heartStatsRankHeart em {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
   line-height: 1;
+  letter-spacing: -0.03em;
+  text-align: left;
+}
+
+.heartStatsRankHeart span {
+  grid-column: 2;
+  grid-row: 1;
+  width: 34px;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
 }
 
 .heartStatsRowHead strong {
+  grid-column: 4;
+  grid-row: 1;
+  align-self: center;
   font-size: 13px;
   color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.heartStatsBar {
-  height: 7px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: var(--surface-soft);
-}
-
-.heartStatsBar i {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--primary);
-}
 
 @keyframes heartStatsOverlayIn {
   from {
@@ -910,7 +901,8 @@
 
   .heartStatsModal {
     width: 100%;
-    max-height: min(84dvh, 680px);
+    height: 82dvh;
+    max-height: 82dvh;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
     border-bottom: 0;
     animation: heartStatsSheetIn 220ms ease-out both;
@@ -920,9 +912,29 @@
     animation: heartStatsSheetOut 190ms ease-in forwards;
   }
 
+  .heartStatsSection {
+    flex: 1;
+  }
+
   .heartStatsList {
-    max-height: 330px;
+    flex: 1;
+    max-height: none;
     padding-bottom: calc(34px + env(safe-area-inset-bottom));
+  }
+
+  .heartStatsRow {
+    grid-template-columns: 22px 36px minmax(0, 1fr) auto;
+    column-gap: 10px;
+    padding: 13px 0;
+  }
+
+  .heartStatsRankHeart em {
+    font-size: 13px;
+  }
+
+  .heartStatsRankHeart span {
+    width: 36px;
+    font-size: 25px;
   }
 }
 
