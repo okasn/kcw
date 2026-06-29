@@ -617,3 +617,331 @@
     transform: translateY(-6px) scaleY(0.92);
   }
 }
+
+.heartStatsCard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 0 12px;
+  padding: 16px 17px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.heartStatsCard:hover {
+ background: var(--surface-soft);
+}
+
+.heartStatsCard p,
+.heartStatsCard span {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.heartStatsCard strong {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: 14px;
+  line-height: 1.25;
+  color: var(--text);
+  letter-spacing: -0.035em;
+}
+
+.heartStatsCard svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.heartStatsOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(23, 24, 27, 0.34);
+  backdrop-filter: blur(6px);
+  animation: heartStatsOverlayIn 180ms ease-out both;
+}
+
+.heartStatsOverlay.isClosing {
+  pointer-events: none;
+  animation: heartStatsOverlayOut 190ms ease-in forwards;
+}
+
+.heartStatsModal {
+  width: min(100%, 430px);
+  max-height: calc(100dvh - 52px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.16);
+  animation: heartStatsModalIn 220ms ease-out both;
+}
+
+.heartStatsOverlay.isClosing .heartStatsModal {
+  animation: heartStatsModalOut 190ms ease-in forwards;
+}
+
+.heartStatsHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px 18px 12px;
+}
+
+.heartStatsHeader h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.heartStatsHeader p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.heartStatsHeader button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.heartStatsSummary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 0 18px 14px;
+}
+
+.heartStatsSummary div {
+  padding: 12px 8px;
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  text-align: center;
+}
+
+.heartStatsSummary strong {
+  display: block;
+  font-size: 16px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.heartStatsSummary span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.heartStatsSection {
+  padding: 0 18px 16px;
+}
+
+.heartStatsSection h4 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.heartStatsTopGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.heartStatsTopGrid div {
+  min-width: 0;
+  padding: 10px 4px;
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  text-align: center;
+}
+
+.heartStatsTopGrid em {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 10px;
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+.heartStatsTopGrid span {
+  display: block;
+  font-size: 21px;
+  line-height: 1.1;
+}
+
+.heartStatsTopGrid strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.heartStatsList {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 3px;
+  padding-bottom: 26px;
+}
+
+.heartStatsRow {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.heartStatsRow:last-child {
+  border-bottom: 0;
+}
+
+.heartStatsRowHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+}
+
+.heartStatsRowHead span {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.heartStatsRowHead strong {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.heartStatsBar {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.heartStatsBar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+}
+
+@keyframes heartStatsOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heartStatsOverlayOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes heartStatsModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heartStatsModalOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+@media (max-width: 699px) {
+  .heartStatsOverlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .heartStatsModal {
+    width: 100%;
+    max-height: min(84dvh, 680px);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    border-bottom: 0;
+    animation: heartStatsSheetIn 220ms ease-out both;
+  }
+
+  .heartStatsOverlay.isClosing .heartStatsModal {
+    animation: heartStatsSheetOut 190ms ease-in forwards;
+  }
+
+  .heartStatsList {
+    max-height: 330px;
+    padding-bottom: calc(34px + env(safe-area-inset-bottom));
+  }
+}
+
+@keyframes heartStatsSheetIn {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartStatsSheetOut {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}

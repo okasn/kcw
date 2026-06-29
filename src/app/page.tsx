@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SiteNav from '@/components/layout/SiteNav';
 import HomeRecommendInfo from '@/components/home/HomeRecommendInfo';
+import HeartStatsCard from '@/components/home/HeartStatsCard';
 import ProfileImageViewer from '@/components/profile/ProfileImageViewer';
 import HomeQuickSettings from '@/components/home/HomeQuickSettings';
 import HomeContactMenu from '@/components/home/HomeContactMenu';
@@ -198,6 +199,8 @@ export default async function HomePage() {
 
             </div>
           </section>
+
+          <HeartStatsCard />
 
           <HomeQuickSettings
             defaultNickname={archive.nickname}
