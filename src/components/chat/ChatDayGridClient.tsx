@@ -189,7 +189,6 @@ export default function ChatDayGridClient({ days }: { days: DayGroup[] }) {
   function clearFilter() {
     setSelectedYear('all');
     setSelectedMonth('all');
-    setSort('newest');
     resetList();
   }
 
