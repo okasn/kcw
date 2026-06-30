@@ -192,13 +192,13 @@ export default async function HomePage() {
                 <p>메시지 내용으로 검색할 수 있어요</p>
               </div>
 
-              <div className="homeNoticeLine homeContactLine">
+              {/* <div className="homeNoticeLine homeContactLine">
                 <div className="homeContactText">
                   <span>모든 문의는</span>
                   <HomeContactMenu />
                   <span>로 부탁드립니다</span>
                 </div>
-              </div>
+              </div> */}
 
             </div>
           </section>
