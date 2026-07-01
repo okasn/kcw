@@ -17,7 +17,7 @@ function normalizeMessages(data) {
   const items = Array.isArray(data) ? data : data?.chats || data?.messages || [];
 
   return items
-    .filter((m) => !m.deleted && !m.isHidden)
+    .filter((m) => !m.isHidden)
     .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt));
 }
 
@@ -37,6 +37,8 @@ function compactTextParts(parts) {
 }
 
 function getTextContent(msg, fanNickname = '딸랑단') {
+  if (msg.deleted === true) return '삭제된 메시지입니다.';
+
   const content = msg.content || msg.translatedMessage || '';
 
   if (msg.hasNick && content) {

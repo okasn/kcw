@@ -14,6 +14,7 @@ function getKoreanDateKey(iso) {
 }
 
 function getKind(msg) {
+  if (msg.deleted === true) return 'deleted';
   if (msg.emoticonItem) return 'emoticon';
 
   const t = String(msg.type || '').toLowerCase();
@@ -29,6 +30,7 @@ function getKind(msg) {
 }
 
 function getThumbnailUrl(msg) {
+  if (msg.deleted === true) return '';
   const type = String(msg.type || '').toLowerCase();
 
   if (type.includes('video')) {
@@ -44,6 +46,7 @@ function getThumbnailUrl(msg) {
 }
 
 function getFallbackThumbnailUrl(msg) {
+  if (msg.deleted === true) return '';
   const type = String(msg.type || '').toLowerCase();
 
   if (type.includes('video')) {
@@ -68,7 +71,7 @@ function getFallbackThumbnailUrl(msg) {
 function normalizeMessages(data) {
   const items = Array.isArray(data) ? data : data?.chats || data?.messages || [];
 
-  return items.filter((m) => !m.deleted && !m.isHidden);
+  return items.filter((m) => !m.isHidden);
 }
 
 const files = fs

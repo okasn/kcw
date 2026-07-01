@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { preload } from 'react-dom';
+import { CircleAlert } from 'lucide-react';
 import { formatKoreanTime } from '@/lib/format';
 import { assetUrl } from '@/lib/cdn';
 import { getKind, getReplyPreview } from '@/lib/message';
@@ -43,12 +44,13 @@ export default function MessageItem({
   }, [currentProfile.fanNickname]);
 
   const hasRealReply =
-    Boolean(msg.mentionedMessageID) ||
-    Boolean(msg.mentionedMessageContent) ||
-    Boolean(msg.mentionedMessageTranslatedMessage) ||
-    Boolean(msg.mentionedMessageEmoticonItem) ||
-    msg.mentionedMessageDeleted === true ||
-    msg.mentionedMessageReported === true;
+    kind !== 'deleted' &&
+    (Boolean(msg.mentionedMessageID) ||
+      Boolean(msg.mentionedMessageContent) ||
+      Boolean(msg.mentionedMessageTranslatedMessage) ||
+      Boolean(msg.mentionedMessageEmoticonItem) ||
+      msg.mentionedMessageDeleted === true ||
+      msg.mentionedMessageReported === true);
 
   return (
     <article
@@ -93,7 +95,12 @@ export default function MessageItem({
 )}
 
         <div className="messageRow">
-          {kind === 'audio' ? (
+          {kind === 'deleted' ? (
+            <div className="textBubble deletedMessageBubble">
+  <CircleAlert size={15} strokeWidth={1.8} />
+  <span>삭제된 메시지입니다.</span>
+</div>
+          ) : kind === 'audio' ? (
             <VoiceMessage msg={msg} />
           ) : kind === 'text' ? (
             <TextMessage msg={msg} fanNickname={fanNickname} />

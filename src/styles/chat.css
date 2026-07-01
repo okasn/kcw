@@ -421,3 +421,15 @@
     filter: brightness(1);
   }
 }
+
+.deletedMessageBubble {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+.deletedMessageBubble svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}

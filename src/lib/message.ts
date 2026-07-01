@@ -4,8 +4,12 @@ export function normalizeMessages(data: any): ChatMessage[] {
   const items = Array.isArray(data) ? data : data?.chats || data?.messages || [];
 
   return items
-    .filter((m: ChatMessage) => !m.deleted && !m.isHidden)
+    .filter((m: ChatMessage) => !m.isHidden)
     .sort((a: ChatMessage, b: ChatMessage) => +new Date(a.createdAt) - +new Date(b.createdAt));
+}
+
+export function isDeletedMessage(msg: ChatMessage) {
+  return msg.deleted === true;
 }
 
 function getEmoticonUrl(item: any) {
@@ -43,6 +47,8 @@ function getEmoticonOriginalUrl(item: any) {
 }
 
 export function getMediaUrl(msg: ChatMessage) {
+  if (isDeletedMessage(msg)) return '';
+
   const type = String(msg.type || '').toLowerCase();
 
   if (msg.emoticonItem) {
@@ -76,6 +82,8 @@ export function getMediaUrl(msg: ChatMessage) {
 }
 
 export function getFallbackMediaUrl(msg: ChatMessage) {
+  if (isDeletedMessage(msg)) return '';
+
   const type = String(msg.type || '').toLowerCase();
 
   if (msg.emoticonItem) {
@@ -126,6 +134,8 @@ export function getFallbackMediaUrl(msg: ChatMessage) {
 }
 
 export function getThumbnailUrl(msg: ChatMessage) {
+  if (isDeletedMessage(msg)) return '';
+
   const type = String(msg.type || '').toLowerCase();
 
   if (type.includes('video')) {
@@ -141,6 +151,8 @@ export function getThumbnailUrl(msg: ChatMessage) {
 }
 
 export function getFallbackThumbnailUrl(msg: ChatMessage) {
+  if (isDeletedMessage(msg)) return '';
+
   const type = String(msg.type || '').toLowerCase();
 
   if (type.includes('video')) {
@@ -174,6 +186,8 @@ export function getReplyPreview(msg: ChatMessage) {
 }
 
 export function getKind(msg: ChatMessage) {
+  if (isDeletedMessage(msg)) return 'deleted';
+
   if (msg.emoticonItem) return 'emoticon';
 
   const t = String(msg.type || '').toLowerCase();
@@ -189,6 +203,8 @@ export function getKind(msg: ChatMessage) {
 }
 
 export function getTextContent(msg: ChatMessage, fanNickname = '딸랑단') {
+  if (isDeletedMessage(msg)) return '삭제된 메시지입니다.';
+
   const content = msg.content || msg.translatedMessage || '';
 
   if (msg.hasNick && content) {
